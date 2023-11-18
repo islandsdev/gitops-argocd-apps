@@ -1,0 +1,64 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: test-ingress-3
+  annotations:
+    alb.ingress.kubernetes.io/backend-protocol: HTTP
+    #alb.ingress.kubernetes.io/healthcheck-interval-seconds: "15"
+    #alb.ingress.kubernetes.io/healthcheck-path: /health
+    alb.ingress.kubernetes.io/healthcheck-port: traffic-port
+    alb.ingress.kubernetes.io/healthcheck-protocol: HTTP
+    alb.ingress.kubernetes.io/healthcheck-timeout-seconds: "5"
+    alb.ingress.kubernetes.io/healthy-threshold-count: "2"
+    alb.ingress.kubernetes.io/load-balancer-attributes: idle_timeout.timeout_seconds=300
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/success-codes: 200,201
+    alb.ingress.kubernetes.io/unhealthy-threshold-count: "2"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: test.com
+    http:
+      paths:
+      - path: /api/
+        pathType: Prefix
+        backend:
+          service:
+            name: api
+            port: 
+              number: 81
+      - path: /doordash/
+        pathType: Prefix
+        backend:
+          service:
+            name: doordash
+            port: 
+              number: 80
+      - path: /grubhub/
+        pathType: Prefix
+        backend:
+          service:
+            name: grubhub
+            port: 
+              number: 80
+      - path: /skip/
+        pathType: Prefix
+        backend:
+          service:
+            name: skip
+            port: 
+              number: 80
+      - path: /socket/
+        pathType: Prefix
+        backend:
+          service:
+            name: socket
+            port: 
+              number: 80
+      - path: /uber/
+        pathType: Prefix
+        backend:
+          service:
+            name: uber
+            port: 
+              number: 80

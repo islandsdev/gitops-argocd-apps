@@ -1,0 +1,24 @@
+---
+# Source: default/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+  labels:
+    app.kubernetes.io/tier: backend
+    app.kubernetes.io/app: api
+spec:
+  type: ClusterIP
+  ports:
+    - name: grpc-port
+      targetPort: 8080
+      protocol: TCP
+      port: 80
+    - name: http-port
+      targetPort: 8081
+      protocol: TCP
+      port: 81
+  selector:
+    # app.kubernetes.io/name: api
+    # app.kubernetes.io/instance: api
+    app.kubernetes.io/app: api

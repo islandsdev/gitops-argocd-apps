@@ -1,0 +1,20 @@
+---
+# Source: default/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: socket
+  labels:
+    app.kubernetes.io/tier: backend
+    app.kubernetes.io/app: socket
+spec:
+  type: ClusterIP
+  ports:
+    - name: socket-port
+      targetPort: 8082
+      protocol: TCP
+      port: 80
+  selector:
+    # app.kubernetes.io/name: socket
+    # app.kubernetes.io/instance: socket
+    app.kubernetes.io/app: socket

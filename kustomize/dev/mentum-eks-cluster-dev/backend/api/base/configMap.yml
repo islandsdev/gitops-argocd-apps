@@ -1,0 +1,12 @@
+---
+# Source: default/templates/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: api-configmap
+  namespace: mentum
+data:
+  api.endpoint: api:80
+  app.endpoint: api:81
+  skip.endpoint: http://skip:80
+  uber.endpoint: http://uber:80

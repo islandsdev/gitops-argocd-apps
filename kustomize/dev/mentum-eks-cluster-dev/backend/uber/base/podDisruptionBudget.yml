@@ -1,0 +1,18 @@
+---
+# Source: default/templates/pdb.yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    app: uber
+    chart: default-0.1.0
+    environment: ""
+    heritage: Helm
+    release: uber
+  name: uber
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: uber
+      release: uber

@@ -1,0 +1,18 @@
+---
+# Source: default/templates/pdb.yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    app: api
+    chart: default-0.1.0
+    environment: ""
+    heritage: Helm
+    release: api
+  name: api
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: api
+      release: api

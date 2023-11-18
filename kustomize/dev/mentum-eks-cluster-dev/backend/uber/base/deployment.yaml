@@ -1,0 +1,80 @@
+---
+# Source: default/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uber
+  labels:
+    app.kubernetes.io/name: uber
+    helm.sh/chart: default-0.1.0
+    app.kubernetes.io/instance: uber
+    app.kubernetes.io/version: "latest"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  minReadySeconds: 0
+  revisionHistoryLimit: 3
+  replicas: 1
+# If only deploying 1 replica, always be sure there is a pod running during updates
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/app: uber
+      app.kubernetes.io/tier: backend
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/app: uber
+        app.kubernetes.io/tier: backend
+    spec:
+      containers:
+        - name: default
+          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/uber:31f6d606d6fb87f1ae74b1699a1a5f341f2fd941"
+          imagePullPolicy: Always
+          # TODO: FIX THIS
+          ports:
+            - containerPort: 8084
+              name: http
+              protocol: TCP
+            # - name: http
+            #   containerPort: 8080
+            #   protocol: TCP
+          envFrom:
+          env:
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: aws_secret_access_key
+                  name: api-creds
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: aws_access_key_id
+                  name: api-creds
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  key: aws_region
+                  name: api-creds
+            - name: UBER_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: uber_client_id
+                  name: uber-creds
+            - name: UBER_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: uber_secret
+                  name: uber-creds
+            - name: API_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  key: api.endpoint
+                  name: api-configmap
+            - name: ENV
+              value: dev
+            - name: QUEUE_MODE
+              value: SNS
+            - name: PLATFORM
+              value: k8s

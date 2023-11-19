@@ -1,19 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mentum-dev-uber
+  name: mentum-dev-backend-api
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: mentum-dev-uber
+    app: api
     env: dev
+    tier: backend
 spec:
   project: mentum-workload-dev
   source:
-    repoURL: https://github.com/holahula/gitops-argocd-apps.git
-    targetRevision: dev
-    path: kustomize/dev/mentum-eks-cluster-dev/backend/uber
+    repoURL: https://github.com/holahula/qr
+    targetRevision: develop
+    path: infra/kustomize/dev/mentum-eks-cluster-dev/backend/api
     directory:
       recurse: false
   destination:

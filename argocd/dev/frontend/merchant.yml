@@ -1,19 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mentum-dev-merchant
+  name: mentum-dev-frontend-merchant
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: mentum-dev-merchant
+    app: mentum-dev-frontend-merchant
     env: dev
+    tier: frontend
 spec:
   project: mentum-workload-dev
   source:
-    repoURL: https://github.com/holahula/gitops-argocd-apps.git
-    targetRevision: dev
-    path: kustomize/dev/mentum-eks-cluster-dev/frontend/merchant
+    repoURL: https://github.com/holahula/qr
+    targetRevision: develop
+    path: infra/kustomize/dev/mentum-eks-cluster-dev/frontend/merchant
     directory:
       recurse: false
   destination:

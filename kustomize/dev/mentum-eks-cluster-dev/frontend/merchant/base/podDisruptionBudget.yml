@@ -1,19 +1,18 @@
 ---
-# Source: default/templates/pdb.yaml
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
+  name: merchant
   labels:
-    app.mentum.dev/name: socket
     app.mentum.dev/appRevision: ""
+    app.mentum.dev/name: merchant
     app.mentum.dev/namespace: mentum
     app.mentum.dev/enviroment: dev
-    app.mentum.dev/tier: backend
+    app.mentum.dev/tier: frontend
     app.mentum.dev/resourceType: PodDisruptionBudget
-  name: socket
 spec:
   maxUnavailable: 1
   selector:
     matchLabels:
-      app.mentum.dev/name: socket
-      app.mentum.dev/tier: backend
+      app.mentum.dev/name: merchant
+      app.mentum.dev/tier: frontend

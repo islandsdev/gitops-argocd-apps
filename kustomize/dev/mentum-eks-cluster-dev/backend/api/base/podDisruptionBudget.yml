@@ -1,16 +1,18 @@
 ---
-# Source: default/templates/pdb.yaml
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
-  labels:
-    app: api
-    environment: dev
-    release: api
   name: api
+  labels:
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/name: api
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: PodDisruptionBudget
 spec:
   maxUnavailable: 1
   selector:
     matchLabels:
-      app: api
-      release: api
+      app.mentum.dev/name: api
+      app.mentum.dev/tier: backend

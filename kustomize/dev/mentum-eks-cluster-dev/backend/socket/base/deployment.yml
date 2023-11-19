@@ -5,11 +5,12 @@ kind: Deployment
 metadata:
   name: socket
   labels:
-    app.kubernetes.io/name: socket
-    helm.sh/chart: default-0.1.0
-    app.kubernetes.io/instance: socket
-    app.kubernetes.io/version: "latest"
-    app.kubernetes.io/managed-by: Helm
+    app.mentum.dev/name: socket
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Deployment
 spec:
   minReadySeconds: 0
   revisionHistoryLimit: 3
@@ -20,13 +21,13 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app.kubernetes.io/app: socket
-      app.kubernetes.io/tier: backend
+      app.mentum.dev/name: socket
+      app.mentum.dev/tier: backend
   template:
     metadata:
       labels:
-        app.kubernetes.io/app: socket
-        app.kubernetes.io/tier: backend
+        app.mentum.dev/name: socket
+        app.mentum.dev/tier: backend
     spec:
       containers:
         - name: default

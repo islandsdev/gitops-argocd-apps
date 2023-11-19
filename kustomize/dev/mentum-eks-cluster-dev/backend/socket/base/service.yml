@@ -5,8 +5,12 @@ kind: Service
 metadata:
   name: socket
   labels:
-    app.kubernetes.io/tier: backend
-    app.kubernetes.io/app: socket
+    app.mentum.dev/name: socket
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Service
 spec:
   type: ClusterIP
   ports:
@@ -15,6 +19,5 @@ spec:
       protocol: TCP
       port: 80
   selector:
-    # app.kubernetes.io/name: socket
-    # app.kubernetes.io/instance: socket
-    app.kubernetes.io/app: socket
+    app.mentum.dev/name: socket
+    app.mentum.dev/tier: backend

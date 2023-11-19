@@ -4,15 +4,16 @@ apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
   labels:
-    app: uber
-    chart: default-0.1.0
-    environment: ""
-    heritage: Helm
-    release: uber
+    app.mentum.dev/name: uber
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: PodDisruptionBudget
   name: uber
 spec:
   maxUnavailable: 1
   selector:
     matchLabels:
-      app: uber
-      release: uber
+      app.mentum.dev/name: uber
+      app.mentum.dev/tier: backend

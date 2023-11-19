@@ -1,0 +1,112 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.mentum.dev/name: skip
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Deployment
+  name: skip
+  namespace: mentum
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.mentum.dev/name: skip
+      app.mentum.dev/tier: backend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.mentum.dev/name: skip
+        app.mentum.dev/tier: backend
+    spec:
+      containers:
+      - env:
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: aws_secret_access_key
+              name: api-creds
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              key: aws_access_key_id
+              name: api-creds
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              key: aws_region
+              name: api-creds
+        - name: SKIP_MENU_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: skip_menu_api_key
+              name: skip-creds
+        - name: SKIP_ORDER_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: skip_order_api_key
+              name: skip-creds
+        - name: SKIP_STOCK_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: skip_stock_api_key
+              name: skip-creds
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: security_secret_key
+              name: api-creds
+        - name: SENTRY_DSN_SKIP
+          valueFrom:
+            secretKeyRef:
+              key: skip_dsn
+              name: sentry-creds
+        - name: API_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              key: api.endpoint
+              name: api-configmap
+        - name: MENTUM_WEBHOOK_KEY
+          valueFrom:
+            secretKeyRef:
+              key: mentum_webhook_key
+              name: uber-creds
+        - name: INTERNAL_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: internal_token
+              name: api-creds
+        - name: REPORT_FORWARD_ENDPOINT
+          value: https://snapanalytics.ca/gk/gk_rpc.php
+        - name: ENV
+          value: prod
+        - name: PLATFORM
+          value: k8s
+        image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/skip:ac8ccb5578df203876e90fb8a510e2d312609a91
+        imagePullPolicy: Always
+        name: default
+        ports:
+        - containerPort: 8085
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 50m
+            memory: 96Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

@@ -1,10 +1,11 @@
 ---
+# Source: default/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: api
+  name: grubhub
   labels:
-    app.mentum.dev/name: api
+    app.mentum.dev/name: grubhub
     app.mentum.dev/appRevision: ""
     app.mentum.dev/namespace: mentum
     app.mentum.dev/enviroment: dev
@@ -22,4 +23,4 @@ spec:
       protocol: TCP
       port: 81
   selector:
-    app.mentum.dev/name: api
+    app.mentum.dev/name: grubhub

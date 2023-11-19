@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mentum-dev-ingress-static-file
+  name: mentum-dev-backend-uber
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: mentum-dev-ingress
+    app: uber
     env: dev
-    tier: infra
+    tier: backend
 spec:
   project: mentum-workload-dev
   source:
     repoURL: https://github.com/holahula/qr
     targetRevision: develop
-    path: infra/kustomize/dev/mentum-eks-cluster-dev/ingress-static-file
+    path: infra/kustomize/dev/mentum-eks-cluster-dev/backend/uber
     directory:
       recurse: false
   destination:

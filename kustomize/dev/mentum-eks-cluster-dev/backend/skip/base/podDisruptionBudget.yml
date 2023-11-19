@@ -1,19 +1,18 @@
 ---
-# Source: default/templates/pdb.yaml
 apiVersion: policy/v1beta1
 kind: PodDisruptionBudget
 metadata:
+  name: skip
   labels:
-    app.mentum.dev/name: socket
     app.mentum.dev/appRevision: ""
+    app.mentum.dev/name: skip
     app.mentum.dev/namespace: mentum
     app.mentum.dev/enviroment: dev
     app.mentum.dev/tier: backend
     app.mentum.dev/resourceType: PodDisruptionBudget
-  name: socket
 spec:
   maxUnavailable: 1
   selector:
     matchLabels:
-      app.mentum.dev/name: socket
+      app.mentum.dev/name: skip
       app.mentum.dev/tier: backend

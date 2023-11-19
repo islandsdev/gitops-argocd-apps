@@ -1,19 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mentum-dev-customer
+  name: mentum-dev-backend-socket
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: mentum-dev-customer
+    app: socket
     env: dev
+    tier: backend
 spec:
   project: mentum-workload-dev
   source:
-    repoURL: https://github.com/holahula/gitops-argocd-apps.git
-    targetRevision: dev
-    path: kustomize/dev/mentum-eks-cluster-dev/frontend/customer
+    repoURL: https://github.com/holahula/qr
+    targetRevision: develop
+    path: infra/kustomize/dev/mentum-eks-cluster-dev/backend/socket
     directory:
       recurse: false
   destination:

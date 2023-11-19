@@ -1,0 +1,125 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.mentum.dev/name: grubhub
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Deployment
+  name: grubhub
+  namespace: mentum
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.mentum.dev/name: grubhub
+      app.mentum.dev/tier: backend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app.mentum.dev/name: grubhub
+        app.mentum.dev/tier: backend
+    spec:
+      containers:
+      - env:
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: aws_secret_access_key
+              name: api-creds
+        - name: AWS_ACCESS_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              key: aws_access_key_id
+              name: api-creds
+        - name: AWS_REGION
+          valueFrom:
+            secretKeyRef:
+              key: aws_region
+              name: api-creds
+        - name: GRUBHUB_BASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: grubhub_base_url
+              name: grubhub-creds
+        - name: GRUBHUB_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: grubhub_client_id
+              name: grubhub-creds
+        - name: GRUBHUB_PARTNER_KEY
+          valueFrom:
+            secretKeyRef:
+              key: grubhub_partner_key
+              name: grubhub-creds
+        - name: GRUBHUB_ISSUE_DATE
+          valueFrom:
+            secretKeyRef:
+              key: grubhub_issue_date
+              name: grubhub-creds
+        - name: GRUBHUB_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: grubhub_secret_key
+              name: grubhub-creds
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              key: security_secret_key
+              name: api-creds
+        - name: GRUBHUB_PUBLIC_ENDPOINT
+          value: https://mentumqr.com/grubhub
+        - name: SENTRY_DSN_GRUBHUB
+          valueFrom:
+            secretKeyRef:
+              key: grubhub_dsn
+              name: sentry-creds
+        - name: API_ENDPOINT
+          valueFrom:
+            configMapKeyRef:
+              key: api.endpoint
+              name: api-configmap
+        - name: MENTUM_WEBHOOK_KEY
+          valueFrom:
+            secretKeyRef:
+              key: mentum_webhook_key
+              name: uber-creds
+        - name: INTERNAL_TOKEN
+          valueFrom:
+            secretKeyRef:
+              key: internal_token
+              name: api-creds
+        - name: REPORT_FORWARD_ENDPOINT
+          value: https://snapanalytics.ca/gk/gk_rpc.php
+        - name: ENV
+          value: prod
+        - name: PLATFORM
+          value: k8s
+        image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub:31bfc3554653b39d2a85f053cde0e85b21a79b39
+        imagePullPolicy: Always
+        name: default
+        ports:
+        - containerPort: 8098
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 50m
+            memory: 96Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

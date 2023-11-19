@@ -1,20 +1,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mentum-dev-ingress-static-file
+  name: mentum-dev-frontend-customer
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: mentum-dev-ingress
+    app: mentum-dev-frontend-customer
     env: dev
-    tier: infra
+    tier: frontend
 spec:
   project: mentum-workload-dev
   source:
     repoURL: https://github.com/holahula/qr
     targetRevision: develop
-    path: infra/kustomize/dev/mentum-eks-cluster-dev/ingress-static-file
+    path: infra/kustomize/dev/mentum-eks-cluster-dev/frontend/customer
     directory:
       recurse: false
   destination:

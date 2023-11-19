@@ -1,22 +1,21 @@
----
-# Source: default/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  name: uber
   labels:
-    app.mentum.dev/name: uber
+    app.mentum.dev/name: merchant
     app.mentum.dev/appRevision: ""
     app.mentum.dev/namespace: mentum
     app.mentum.dev/enviroment: dev
-    app.mentum.dev/tier: backend
+    app.mentum.dev/tier: frontend
     app.mentum.dev/resourceType: Service
+  name: merchant
+  namespace: mentum
 spec:
   type: ClusterIP
   ports:
-    - name: uber-port
-      targetPort: 8084
-      protocol: TCP
-      port: 80
+  - name: merchant-port
+    port: 80
+    protocol: TCP
+    targetPort: 3000
   selector:
-    app.mentum.dev/name: uber
+    app.mentum.dev/name: merchant

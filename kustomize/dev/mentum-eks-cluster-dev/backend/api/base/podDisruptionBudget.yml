@@ -5,9 +5,7 @@ kind: PodDisruptionBudget
 metadata:
   labels:
     app: api
-    chart: default-0.1.0
-    environment: ""
-    heritage: Helm
+    environment: dev
     release: api
   name: api
 spec:

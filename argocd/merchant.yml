@@ -9,7 +9,7 @@ metadata:
     app: mentum-dev-merchant
     env: dev
 spec:
-  project: mentum-dev
+  project: mentum-workload-dev
   source:
     repoURL: https://github.com/holahula/gitops-argocd-apps.git
     targetRevision: dev

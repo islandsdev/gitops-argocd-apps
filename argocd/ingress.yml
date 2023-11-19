@@ -9,10 +9,10 @@ metadata:
     app: mentum-dev-ingress
     env: dev
 spec:
-  project: mentum-dev
+  project: mentum-workload-dev
   source:
-    repoURL: https://github.com/holahula/gitops-argocd-apps.git
-    targetRevision: dev
+    repoURL: https://github.com/holahula/gitops-argocd-apps
+    targetRevision: main
     path: kustomize/dev/mentum-eks-cluster-dev/ingress-static-file
     directory:
       recurse: false

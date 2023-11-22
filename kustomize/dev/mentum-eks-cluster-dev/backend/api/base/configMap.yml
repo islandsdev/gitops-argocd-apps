@@ -20,3 +20,107 @@ data:
   skip.endpoint: http://skip:80
   uber.endpoint: http://uber:80
   omnivore.endpoint: http://omnivore:80
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: analytics-file-configmap
+  namespace: mentum
+  labels:
+    app.mentum.dev/name: api
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: ConfigMap
+data:
+  analytics.sql: >-
+    -- This query is used for analytics reporting and anomaly detection
+
+    -- Format this query with the query for create_time, start time and end time
+    and the extra criteria in that particular order
+
+    SELECT
+        a.base - a.discount as net,
+        tip_percentage * (a.base - a.discount) / 100.0 as tip,
+        a.base - a.discount + a.tax as gross,
+        TO_CHAR(create_time, 'YYYY-MM-DD') as day,
+        TO_CHAR(date_trunc('week', create_time), 'YYYY-MM-DD') as week_start,
+        TO_CHAR(create_time, 'YYYY-MM') as month,
+        TO_CHAR(create_time, 'YYYY') as year,
+        TO_CHAR(create_time, 'YYYY-MM-DD HH24:00:00') as hour,
+        *
+    FROM (
+        SELECT
+            item_instances.amount / 100.0 as base,
+            case
+                when least(orders.total_discount, orders.amount) = 0 then 0
+                else least(orders.total_discount, orders.amount) / 100.0 * item_instances.amount / orders.amount
+            end as discount,
+            case
+                when orders.amount = 0 then 0
+                else orders.sales_tax / 100.0 * item_instances.amount / orders.amount
+            end as tax,
+            replace(restaurants.restaurant_name, 'Ghost Kitchen - ', '') as restaurant_name,
+            restaurants.restaurant_id as restaurant_id,
+            restaurants.focus_brands_id as focus_brands_id,
+            restaurants.timezone as timezone,
+            restaurants.tax_percentage as tax_percentage,
+            UPPER(restaurants.currency) as currency,
+            case
+                when UPPER(restaurants.currency) = 'CAD' then 'CA'
+                when UPPER(restaurants.currency) = 'USD' then 'US'
+            end as country_code,
+            case
+                when UPPER(restaurants.currency) = 'USD' then 'US'
+                when UPPER(restaurants.timezone) = 'MST7MDT' then 'AB'
+                when UPPER(restaurants.timezone) = 'EST5EDT' then 'ON'
+            end as province,
+            %s as create_time,
+            EXTRACT(HOUR FROM create_time) as create_hour,
+            guests.payment_type as payment_type,
+            guests.affiliate_code as affiliate_code,
+            guests.campaign_code as campaign_code,
+            guests.guest_id as guest_id,
+            orders.order_type as order_type,
+            orders.amount as order_amount,
+            orders.total_discount as total_discount,
+            case
+                when orders.delivery_platform = 0 then 'None'
+                when orders.delivery_platform = 1 then 'QR'
+                when orders.delivery_platform = 2 then 'Uber Eats'
+                when orders.delivery_platform = 3 then 'Doordash'
+                when orders.delivery_platform = 4 then 'Skip the Dishes'
+                when orders.delivery_platform = 5 then 'Kiosk'
+                when orders.delivery_platform = 6 then 'Ritual'
+                when orders.delivery_platform = 7 then 'Grubhub'
+                when orders.delivery_platform = 8 then 'Front Counter'
+                when orders.delivery_platform = 9 then 'Catering'
+                when orders.delivery_platform = 10 then 'Olo'
+            end as delivery_platform,
+            orders.tip_percentage as tip_percentage,
+            orders.label as label,
+            orders.order_id as order_id,
+            item_instances.item_instance_id as item_instance_id,
+            item_instances.modifiers as modifiers,
+            item_instances.has_paid as has_paid,
+            item_instances.item_instance_state as item_instance_state,
+            menus.menu_name as menu_name,
+            menus.menu_id as menu_id,
+            items.item_id as item_id,
+            items.item_name as item_name,
+            coalesce(nullif(items.brand_type,''), nullif(orders.brand_type,''), 'None') as brand_type,
+            items.brand_id as brand_id,
+            ROUND(items.preparation_time / 60.0, 1) as preparation_mins,
+            tags.tag_id as tag_id,
+            tags.tag_name as tag_name
+        FROM item_instances
+            JOIN orders on item_instances.order_id = orders.order_id
+            JOIN guests on item_instances.guest_id = guests.guest_id
+            JOIN restaurants on item_instances.restaurant_id = restaurants.restaurant_id
+            LEFT JOIN menus on item_instances.analytics_menu_id = menus.menu_id
+            JOIN items on item_instances.item_id = items.item_id
+            LEFT JOIN tag_item on items.item_id = tag_item.item_id
+            LEFT JOIN tags on tag_item.tag_id = tags.tag_id
+        %s
+    ) a

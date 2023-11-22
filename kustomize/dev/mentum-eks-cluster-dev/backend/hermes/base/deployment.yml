@@ -1,0 +1,87 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hermes
+  labels:
+    app.mentum.dev/name: hermes
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Deployment
+spec:
+  minReadySeconds: 0
+  revisionHistoryLimit: 3
+  replicas: 1
+# If only deploying 1 replica, always be sure there is a pod running during updates
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.mentum.dev/name: hermes
+      app.mentum.dev/tier: backend
+  template:
+    metadata:
+      labels:
+        app.mentum.dev/name: hermes
+        app.mentum.dev/tier: backend
+    spec:
+      containers:
+        - name: default
+          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/hermes:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0"
+          imagePullPolicy: Always
+          # TODO: FIX THIS
+          ports:
+            - containerPort: 8092
+              name: http
+              protocol: TCP
+            # - name: http
+            #   containerPort: 8080
+            #   protocol: TCP
+          envFrom:
+          env:
+            - name: API_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  key: api.endpoint
+                  name: api-configmap
+            - name: TWILIO_WEBHOOK
+              valueFrom:
+                secretKeyRef:
+                  key: twilio_webhook
+                  name: hermes-creds
+            - name: PROD_TWILIO_SID
+              valueFrom:
+                secretKeyRef:
+                  key: twilio_sid
+                  name: hermes-creds
+            - name: PROD_TWILIO_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: twilio_auth_token
+                  name: hermes-creds
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: security_secret_key
+                  name: api-creds
+            - name: INTERNAL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: internal_token
+                  name: api-creds
+            - name: SENTRY_DSN_TWILIO
+              valueFrom:
+                secretKeyRef:
+                  key: hermes_dsn
+                  name: sentry-creds
+            - name: ENV
+              value: prod
+            - name: PLATFORM
+              value: k8s
+          resources:
+            requests:
+              cpu: 50m
+              memory: 96Mi

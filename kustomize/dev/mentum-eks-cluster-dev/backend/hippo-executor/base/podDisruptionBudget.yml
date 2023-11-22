@@ -1,0 +1,18 @@
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    app.mentum.dev/name: hippo-executor
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: PodDisruptionBudget
+  name: hippo-executor
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.mentum.dev/name: hippo-executor
+      app.mentum.dev/tier: backend

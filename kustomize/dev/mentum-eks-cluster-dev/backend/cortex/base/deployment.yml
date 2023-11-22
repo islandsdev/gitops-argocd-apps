@@ -1,0 +1,112 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cortex
+  labels:
+    app.mentum.dev/name: cortex
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Deployment
+spec:
+  minReadySeconds: 0
+  revisionHistoryLimit: 3
+  replicas: 2
+# If only deploying 1 replica, always be sure there is a pod running during updates
+  selector:
+    matchLabels:
+      app.mentum.dev/name: cortex
+      app.mentum.dev/tier: backend
+  template:
+    metadata:
+      labels:
+        app.mentum.dev/name: cortex
+        app.mentum.dev/tier: backend
+    spec:
+      containers:
+        - name: default
+          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/cortex:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0"
+          imagePullPolicy: Always
+          # TODO: FIX THIS
+          ports:
+            - containerPort: 8093
+              name: grpc
+              protocol: TCP
+            - containerPort: 8094
+              name: http
+              protocol: TCP
+            # - name: http
+            #   containerPort: 8080
+            #   protocol: TCP
+          envFrom:
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: aws_access_key_id
+                  name: api-creds
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: aws_secret_access_key
+                  name: api-creds
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  key: aws_region
+                  name: api-creds
+            - name: ARN
+              valueFrom:
+                secretKeyRef:
+                  key: arn
+                  name: api-creds
+            - name: DB_PROD
+              valueFrom:
+                secretKeyRef:
+                  key: db_prod
+                  name: api-creds
+            - name: PROD_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: prod_db_host
+                  name: api-creds
+            - name: PROD_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: prod_username
+                  name: api-creds
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: db_port
+                  name: api-creds
+            - name: SENTRY_DSN_CORTEX
+              valueFrom:
+                secretKeyRef:
+                  key: cortex_dsn
+                  name: sentry-creds
+            - name: AUTH0_ENDPOINT
+              valueFrom:
+                secretKeyRef:
+                  key: auth0_endpoint
+                  name: api-creds
+            - name: ENV
+              value: prod
+            - name: QUEUE_MODE
+              value: SNS
+            - name: REDIS_HOST
+              value: redis-master.mentum
+            - name: REDIS_PORT
+              value: "6379"
+            - name: REDIS_MODE
+              value: pool
+            - name: PLATFORM
+              value: k8s
+            - name: REPORT_EMAIL
+              value: no-reply@mentumqr.com
+          resources:
+            requests:
+              cpu: 300m
+              memory: 192Mi

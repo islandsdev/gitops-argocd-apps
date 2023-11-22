@@ -1,0 +1,89 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: analytics
+  labels:
+    app.mentum.dev/name: analytics
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Deployment
+spec:
+  minReadySeconds: 0
+  revisionHistoryLimit: 3
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.mentum.dev/name: analytics
+      app.mentum.dev/tier: backend
+  template:
+    metadata:
+      labels:
+        app.mentum.dev/name: analytics
+        app.mentum.dev/tier: backend
+    spec:
+      containers:
+        - name: default
+          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend:ac8ccb5578df203876e90fb8a510e2d312609a91"
+          imagePullPolicy: Always
+          # TODO: FIX THIS
+          ports:
+            - containerPort: 4000
+              name: http
+              protocol: TCP
+          volumeMounts: 
+            - mountPath: /usr/src/app/jwks.json
+              name: analytics-jwks
+              readOnly: true
+              subPath: jwks.json
+          envFrom:
+          env:
+            - name: CUBEJS_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: cubejs_db_host
+                  name: analytics-creds
+            - name: CUBEJS_DB_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: cubejs_db_name
+                  name: analytics-creds
+            - name: CUBEJS_DB_USER
+              valueFrom:
+                secretKeyRef:
+                  key: cubejs_db_user
+                  name: analytics-creds
+            - name: CUBEJS_DB_PASS
+              valueFrom:
+                secretKeyRef:
+                  key: cubejs_db_pass
+                  name: analytics-creds
+            - name: CUBEJS_WEB_SOCKETS
+              valueFrom:
+                secretKeyRef:
+                  key: cubejs_web_sockets
+                  name: analytics-creds
+            - name: CUBEJS_DB_TYPE
+              valueFrom:
+                secretKeyRef:
+                  key: cubejs_db_type
+                  name: analytics-creds
+            - name: CUBEJS_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  key: cubejs_api_secret
+                  name: analytics-creds
+            - name: node_tls_reject_unauthorized
+              valueFrom:
+                secretKeyRef:
+                  key: node_tls_reject_unauthorized
+                  name: analytics-creds
+      volumes: 
+        - name: analytics-jwks
+          secret:
+            secretName: analytics-jwks

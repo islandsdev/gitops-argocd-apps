@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hermes
+  labels:
+    app.mentum.dev/name: hermes
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Service
+spec:
+  type: ClusterIP
+  ports:
+    - name: hermes-port
+      targetPort: 8092
+      protocol: TCP
+      port: 80
+  selector:
+    app.mentum.dev/name: hermes
+    app.mentum.dev/tier: backend

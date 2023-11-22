@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: analytics
+  labels:
+    app.mentum.dev/name: analytics
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Service
+spec:
+  type: ClusterIP
+  ports:
+    - name: analytics-port
+      targetPort: 4000
+      protocol: TCP
+      port: 80
+  selector:
+    app.mentum.dev/name: analytics

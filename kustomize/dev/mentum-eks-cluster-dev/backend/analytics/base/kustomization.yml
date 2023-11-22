@@ -1,0 +1,6 @@
+resources:
+- deployment.yml
+- service.yml
+- podDisruptionBudget.yml
+- externalSecret.yml
+- ingress.yml

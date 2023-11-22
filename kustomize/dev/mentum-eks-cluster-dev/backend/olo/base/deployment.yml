@@ -1,0 +1,88 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olo
+  labels:
+    app.mentum.dev/name: olo
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Deployment
+spec:
+  minReadySeconds: 0
+  revisionHistoryLimit: 3
+  replicas: 2
+# If only deploying 1 replica, always be sure there is a pod running during updates
+  selector:
+    matchLabels:
+      app.mentum.dev/name: olo
+      app.mentum.dev/tier: backend
+  template:
+    metadata:
+      labels:
+        app.mentum.dev/name: olo
+        app.mentum.dev/tier: backend
+    spec:
+      containers:
+        - name: default
+          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/olo:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0"
+          imagePullPolicy: Always
+          # TODO: FIX THIS
+          ports:
+            - containerPort: 8095
+              name: http
+              protocol: TCP
+            # - name: http
+            #   containerPort: 8080
+            #   protocol: TCP
+          envFrom:
+          env:
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: aws_secret_access_key
+                  name: api-creds
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  key: aws_access_key_id
+                  name: api-creds
+            - name: AWS_REGION
+              valueFrom:
+                secretKeyRef:
+                  key: aws_region
+                  name: api-creds
+            - name: INTERNAL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: internal_token
+                  name: api-creds
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: security_secret_key
+                  name: api-creds
+            - name: SENTRY_DSN_OLO
+              valueFrom:
+                secretKeyRef:
+                  key: olo_dsn
+                  name: sentry-creds
+            - name: MRBEAST_OLO_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: mrbeast_olo_secret_key
+                  name: api-creds
+            - name: REPORT_FORWARD_ENDPOINT
+              value: https://snapanalytics.ca/gk/gk_rpc.php
+            - name: ENV
+              value: prod
+            - name: PLATFORM
+              value: k8s
+            - name: TEST_OLO_SECRET_KEY
+              value: L0lAK5Kze0ln+uQFACAJaOKwo5wRH8LZdkqMVUt1MVg06iaqzhX19czaCDiNkRZK
+          resources:
+            requests:
+              cpu: 50m
+              memory: 96Mi

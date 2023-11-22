@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata: 
+  name: cortex-configmap
+  namespace: mentum
+data:
+  cortex.endpoint: cortex:81
+  doordash.endpoint: http://doordash:80
+  skip.endpoint: http://skip:80
+  uber.endpoint: http://uber:80

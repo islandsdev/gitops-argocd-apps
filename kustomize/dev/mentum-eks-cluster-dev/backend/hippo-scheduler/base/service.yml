@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hippo-scheduler
+  labels:
+    app.mentum.dev/name: hippo-executor
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: Service
+spec:
+  type: ClusterIP
+  ports:
+    - name: hippo-scheduler-port
+      targetPort: 8096
+      protocol: TCP
+      port: 80
+  selector:
+    app.mentum.dev/name: hippo-executor

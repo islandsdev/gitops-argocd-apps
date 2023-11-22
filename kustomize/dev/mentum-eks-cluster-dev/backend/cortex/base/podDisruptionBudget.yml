@@ -1,0 +1,19 @@
+---
+# Source: default/templates/pdb.yaml
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  labels:
+    app.mentum.dev/name: cortex
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: backend
+    app.mentum.dev/resourceType: PodDisruptionBudget
+  name: cortex
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: cortex
+      release: cortex

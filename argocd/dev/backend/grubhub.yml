@@ -12,9 +12,9 @@ metadata:
 spec:
   project: mentum-workload-dev
   source:
-    repoURL: https://github.com/holahula/qr
+    repoURL: https://github.com/GKB-Sean/gitops-argocd-apps
     targetRevision: develop
-    path: infra/kustomize/dev/mentum-eks-cluster-dev/backend/grubhub
+    path: kustomize/dev/mentum-eks-cluster-dev/backend/grubhub
     directory:
       recurse: false
   destination:

@@ -13,7 +13,7 @@ spec:
   project: mentum-workload-dev
   source:
     repoURL: https://github.com/GKB-Sean/gitops-argocd-apps
-    targetRevision: develop
+    targetRevision: main
     path: kustomize/dev/mentum-eks-cluster-dev/backend/caput
     directory:
       recurse: false

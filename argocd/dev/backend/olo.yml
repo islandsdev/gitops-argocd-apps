@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: api
+    app: olo
     env: dev
     tier: backend
 spec:

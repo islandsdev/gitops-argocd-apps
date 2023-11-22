@@ -6,7 +6,7 @@ metadata:
   finalizers:
     - resources-finalizer.argocd.argoproj.io
   labels:
-    app: api
+    app: hippo-server
     env: dev
     tier: backend
 spec:

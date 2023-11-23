@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler:2d9e2530c795e992f82916d48cd6b893366dc449
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler
-  newTag: 2d9e2530c795e992f82916d48cd6b893366dc449
+  newTag: 33682dae22d6be79be584fbdacbca65abd521d79
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler
   newTag: 2d9e2530c795e992f82916d48cd6b893366dc449

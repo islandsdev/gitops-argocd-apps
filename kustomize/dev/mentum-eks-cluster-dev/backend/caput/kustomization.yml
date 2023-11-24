@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/caput:2d9e2530c795e992f82916d48cd6b893366dc449
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/caput
-  newTag: abc71fd0d28c193adc3f73e5f764750ec989ed2f
+  newTag: ab5398d9152597b9b26f0ae41f791a12487918ab
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/caput:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/caput
   newTag: 2d9e2530c795e992f82916d48cd6b893366dc449

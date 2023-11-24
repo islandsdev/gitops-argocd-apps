@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server:2d9e2530c795e992f82916d48cd6b893366dc449
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
-  newTag: 77ed26956b635c478e273c6348e9a272de6527c4
+  newTag: abc71fd0d28c193adc3f73e5f764750ec989ed2f
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
   newTag: 2d9e2530c795e992f82916d48cd6b893366dc449

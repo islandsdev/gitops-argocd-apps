@@ -24,6 +24,13 @@ spec:
             name: merchant
             port: 
               number: 80
+      - path: /ameego/
+        pathType: Prefix
+        backend:
+          service:
+            name: ameego
+            port: 
+              number: 80
       - path: /api/
         pathType: Prefix
         backend:
@@ -31,6 +38,34 @@ spec:
             name: api
             port: 
               number: 81
+      - path: /cortex/
+        pathType: Prefix
+        backend:
+          service:
+            name: cortex
+            port: 
+              number: 81
+      - path: /hermes/
+        pathType: Prefix
+        backend:
+          service:
+            name: hermes
+            port: 
+              number: 80
+      - path: /hippo/
+        pathType: Prefix
+        backend:
+          service:
+            name: hippo
+            port: 
+              number: 81
+      - path: /olo/
+        pathType: Prefix
+        backend:
+          service:
+            name: olo
+            port: 
+              number: 80
       - path: /doordash/
         pathType: Prefix
         backend:

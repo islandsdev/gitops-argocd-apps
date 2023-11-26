@@ -7,20 +7,13 @@ metadata:
 spec:
   ingressClassName: public-nginx
   rules:
-  - host: analytics.dev.mentumqr.com
+  - host: api.dev.mentumqr.com
     http:
       paths:
-      - path: /
+      - path: /v1/
         pathType: Prefix
         backend:
           service:
-            name: analytics
-            port: 
-              number: 80
-      - path: /analytics/api/
-        pathType: Prefix
-        backend:
-          service:
-            name: analytics
+            name: caput
             port: 
               number: 80

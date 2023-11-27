@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend:2d9e2530c795e992f82916d48cd6b893366dc449
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
-  newTag: c2a3ad302d6185f877b48894e3f7d30e50ec92d4
+  newTag: 3d373c3ea2464a5557ce49682e16221447d13932
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend:ac8ccb5578df203876e90fb8a510e2d312609a91
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
   newTag: 2d9e2530c795e992f82916d48cd6b893366dc449

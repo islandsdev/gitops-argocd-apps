@@ -83,8 +83,8 @@ jobs:
           esac
 
           echo "Syncing application: $app_name"
-          argocd app sync ${ARGOCD_APP_NAME} --grpc-web --async --force ||true'
-          argocd app wait --grpc-web ${ARGOCD_APP_NAME} --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'
+          argocd app sync ${ARGOCD_APP_NAME} --grpc-web --async --force ||true
+          argocd app wait --grpc-web ${ARGOCD_APP_NAME} --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?
 
           if [[ ${rc} -ne 0 ]]; then
             errmsg=$(cat errmsg.txt)

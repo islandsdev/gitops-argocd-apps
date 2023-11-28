@@ -3,6 +3,6 @@ resources:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hermes
-  newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hermes
+- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-executor
+  newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-executor
   newTag: 3d373c3ea2464a5557ce49682e16221447d13932

@@ -60,39 +60,31 @@ jobs:
         echo "Getting ArgoCD Credentials"
         ARGOCD_PASSWORD=$(aws secretsmanager get-secret-value \
             --secret-id dev/mentum/infra/argocd-admin-creds \
-            --query SecretString | jq -r 'fromjson? | .password')     
+            --query SecretString | jq -r 'fromjson? | .password')
+
+        echo "Logging in to ArgoCD Server: ${ARGOCD_SERVER} for application: ${app_name}"
+        argocd login ${ARGOCD_SERVER} \
+          --username ${ARGOCD_USERNAME} \
+          --password ${ARGOCD_PASSWORD} \
+          --insecure \
+          --grpc-web
 
         for app_name in "${APPS[@]}"; do
-          echo "Logging in to ArgoCD Server: ${ARGOCD_SERVER} for application: ${app_name}"
-          argocd login ${ARGOCD_SERVER} \
-            --username ${ARGOCD_USERNAME} \
-            --password ${ARGOCD_PASSWORD} \
-            --insecure \
-            --grpc-web
-
           case $app_name in
             "customer"| "merchant")
               ARGOCD_APP_NAME="mentum-dev-frontend-${app_name}"
-              ARGOCD_APP_PATH="argocd/dev/frontend"
               ;;
             "ingress")
               ARGOCD_APP_NAME="mentum-dev-ingress-static-file"
-              ARGOCD_APP_PATH="argocd/dev/ingress"
               ;;
             *)
               ARGOCD_APP_NAME="mentum-dev-backend-${app_name}"
-              ARGOCD_APP_PATH="argocd/dev/backend"
               ;;
           esac
 
-          echo "Navigating to ArgoCD Application Repository"
-          cd ${ARGOCD_APP_PATH}/
-          echo $(pwd)
-
           echo "Syncing application: $app_name"
-          argocd app sync $ARGOCD_APP_NAME --grpc-web --async --force ||true'
-
-          argocd app wait --grpc-web $ARGOCD_APP_NAME --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'
+          argocd app sync ${ARGOCD_APP_NAME} --grpc-web --async --force ||true'
+          argocd app wait --grpc-web ${ARGOCD_APP_NAME} --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'
 
           if [[ ${rc} -ne 0 ]]; then
             errmsg=$(cat errmsg.txt)

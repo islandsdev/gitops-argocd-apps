@@ -3,9 +3,6 @@ resources:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend:2d9e2530c795e992f82916d48cd6b893366dc449
+- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
-  newTag: 261dca1c4f9251e3ed31d09539ae4bd4102bd93d
-- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend:ac8ccb5578df203876e90fb8a510e2d312609a91
-  newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
-  newTag: 2d9e2530c795e992f82916d48cd6b893366dc449
+  newTag: 3d373c3ea2464a5557ce49682e16221447d13932

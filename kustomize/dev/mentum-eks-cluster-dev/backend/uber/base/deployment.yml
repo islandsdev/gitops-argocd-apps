@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: default
-          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/uber:31f6d606d6fb87f1ae74b1699a1a5f341f2fd941"
+          image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/uber
           imagePullPolicy: Always
           # TODO: FIX THIS
           ports:

@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: default
-          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0"
+          image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler
           imagePullPolicy: Always
           # TODO: FIX THIS
           ports:

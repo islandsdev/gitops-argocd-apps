@@ -3,9 +3,6 @@ resources:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server:2d9e2530c795e992f82916d48cd6b893366dc449
+- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
-  newTag: 261dca1c4f9251e3ed31d09539ae4bd4102bd93d
-- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server:ded53e7fc9ea36e72a01a25495cdd8bed9045fe0
-  newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
-  newTag: 2d9e2530c795e992f82916d48cd6b893366dc449
+  newTag: 3d373c3ea2464a5557ce49682e16221447d13932

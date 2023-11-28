@@ -29,7 +29,7 @@ spec:
     spec:
       containers:
         - name: default
-          image: "238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend:ac8ccb5578df203876e90fb8a510e2d312609a91"
+          image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
           imagePullPolicy: Always
           # TODO: FIX THIS
           ports:

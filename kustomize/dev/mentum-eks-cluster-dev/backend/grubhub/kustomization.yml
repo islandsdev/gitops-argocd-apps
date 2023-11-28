@@ -3,9 +3,6 @@ resources:
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
-- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub:2d9e2530c795e992f82916d48cd6b893366dc449
+- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub
-  newTag: 69fe957db42b41bbdcf5ec4b95f5c8c98535f579
-- name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub:31bfc3554653b39d2a85f053cde0e85b21a79b39
-  newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub
-  newTag: 2d9e2530c795e992f82916d48cd6b893366dc449
+  newTag: 3d373c3ea2464a5557ce49682e16221447d13932

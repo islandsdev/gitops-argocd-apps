@@ -161,8 +161,7 @@ spec:
               value: no-reply@mentumqr.com
             - name: BAMBORA_MERCHANT_ID
               value: '384520000'
-          image: >-
-            238975939821.dkr.ecr.us-east-1.amazonaws.com/api:835545029e9caec951484396577ddc1002ea4a45
+          image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/api
           imagePullPolicy: Always
           name: default
           ports:

@@ -95,5 +95,4 @@ jobs:
             echo "${errmsg}" | grep -q 'timed out'
             [[ $? -ne 0 ]] && echo ${errmsg} && exit ${rc}
           fi
-
         done

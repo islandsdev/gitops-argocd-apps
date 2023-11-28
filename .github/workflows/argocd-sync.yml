@@ -85,16 +85,10 @@ jobs:
               ;;
           esac
 
-          echo "Navigating to ArgoCD Application Repository of the Application: ${app_name}"
-          echo $(pwd)
-          ls -l
-          cd ${ARGOCD_APP_PATH}/
-          echo $(pwd)
-
           echo "Syncing application: $app_name"
-          argocd app sync $ARGOCD_APP_NAME --grpc-web --async --force ||true'
+          argocd app sync ${ARGOCD_APP_PATH}/${ARGOCD_APP_NAME} --grpc-web --async --force ||true'
 
-          argocd app wait --grpc-web $ARGOCD_APP_NAME --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'
+          argocd app wait --grpc-web ${ARGOCD_APP_PATH}/${ARGOCD_APP_NAME} --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'
 
           if [[ ${rc} -ne 0 ]]; then
             errmsg=$(cat errmsg.txt)

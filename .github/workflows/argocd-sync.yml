@@ -86,6 +86,9 @@ jobs:
           esac
 
           echo "Syncing application: $app_name"
+          pwd
+          ls -la
+          
           argocd app sync ${ARGOCD_APP_PATH}/${ARGOCD_APP_NAME} --grpc-web --async --force ||true'
 
           argocd app wait --grpc-web ${ARGOCD_APP_PATH}/${ARGOCD_APP_NAME} --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'

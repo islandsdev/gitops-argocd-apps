@@ -73,25 +73,22 @@ jobs:
           case $app_name in
             "customer"| "merchant")
               ARGOCD_APP_NAME="mentum-dev-frontend-${app_name}"
-              ARGOCD_APP_PATH="argocd/dev/frontend"
               ;;
             "ingress")
               ARGOCD_APP_NAME="mentum-dev-ingress-static-file"
-              ARGOCD_APP_PATH="argocd/dev/ingress"
               ;;
             *)
               ARGOCD_APP_NAME="mentum-dev-backend-${app_name}"
-              ARGOCD_APP_PATH="argocd/dev/backend"
               ;;
           esac
 
           echo "Syncing application: $app_name"
           pwd
           ls -la
-          
-          argocd app sync ${ARGOCD_APP_PATH}/${ARGOCD_APP_NAME} --grpc-web --async --force ||true'
 
-          argocd app wait --grpc-web ${ARGOCD_APP_PATH}/${ARGOCD_APP_NAME} --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'
+          argocd app sync ${ARGOCD_APP_NAME} --grpc-web --async --force ||true'
+
+          argocd app wait --grpc-web ${ARGOCD_APP_NAME} --sync --health --operation --timeout=900 2>errmsg.txt; rc=$?'
 
           if [[ ${rc} -ne 0 ]]; then
             errmsg=$(cat errmsg.txt)

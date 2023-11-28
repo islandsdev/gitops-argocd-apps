@@ -86,6 +86,8 @@ jobs:
           esac
 
           echo "Navigating to ArgoCD Application Repository"
+          echo $(pwd)
+          ls -l
           cd ${ARGOCD_APP_PATH}/
           echo $(pwd)
 

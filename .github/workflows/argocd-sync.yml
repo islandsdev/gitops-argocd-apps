@@ -60,16 +60,16 @@ jobs:
         echo "Getting ArgoCD Credentials"
         ARGOCD_PASSWORD=$(aws secretsmanager get-secret-value \
             --secret-id dev/mentum/infra/argocd-admin-creds \
-            --query SecretString | jq -r 'fromjson? | .password')     
+            --query SecretString | jq -r 'fromjson? | .password')
+
+        echo "Logging in to ArgoCD Server: ${ARGOCD_SERVER} for application: ${app_name}"
+        argocd login ${ARGOCD_SERVER} \
+          --username ${ARGOCD_USERNAME} \
+          --password ${ARGOCD_PASSWORD} \
+          --insecure \
+          --grpc-web
 
         for app_name in "${APPS[@]}"; do
-          echo "Logging in to ArgoCD Server: ${ARGOCD_SERVER} for application: ${app_name}"
-          argocd login ${ARGOCD_SERVER} \
-            --username ${ARGOCD_USERNAME} \
-            --password ${ARGOCD_PASSWORD} \
-            --insecure \
-            --grpc-web
-
           case $app_name in
             "customer"| "merchant")
               ARGOCD_APP_NAME="mentum-dev-frontend-${app_name}"
@@ -85,7 +85,7 @@ jobs:
               ;;
           esac
 
-          echo "Navigating to ArgoCD Application Repository"
+          echo "Navigating to ArgoCD Application Repository of the Application: ${app_name}"
           echo $(pwd)
           ls -l
           cd ${ARGOCD_APP_PATH}/

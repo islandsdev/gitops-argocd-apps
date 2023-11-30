@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: api-grpc.dev.mentumqr.com
   annotations:
-    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    alb.ingress.kubernetes.io/backend-protocol: HTTPS
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS":443}]'
 spec:
   ingressClassName: public-nginx
   rules:

@@ -14,7 +14,7 @@ spec:
   minReadySeconds: 0
   revisionHistoryLimit: 3
   replicas: 2
-# If only deploying 1 replica, always be sure there is a pod running during updates
+  # If only deploying 1 replica, always be sure there is a pod running during updates
   selector:
     matchLabels:
       app.mentum.dev/name: cortex
@@ -105,7 +105,7 @@ spec:
             - name: PLATFORM
               value: k8s
             - name: REPORT_EMAIL
-              value: no-reply@mentumqr.com
+              value: reporting@ghostkitchenbrands.com
           resources:
             requests:
               cpu: 300m

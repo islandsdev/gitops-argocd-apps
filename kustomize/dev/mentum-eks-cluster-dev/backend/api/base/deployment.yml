@@ -157,15 +157,15 @@ spec:
             - name: REDIS_HOST
               value: redis-master.mentum
             - name: REDIS_PORT
-              value: '6379'
+              value: "6379"
             - name: REDIS_MODE
               value: pool
             - name: PLATFORM
               value: k8s
             - name: REPORT_EMAIL
-              value: no-reply@mentumqr.com
+              value: reporting@ghostkitchenbrands.com
             - name: BAMBORA_MERCHANT_ID
-              value: '384520000'
+              value: "384520000"
           image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/api
           imagePullPolicy: Always
           name: default

@@ -4,3 +4,4 @@ resources:
 - configMap.yml
 - externalSecret.yml
 - podDisruptionBudget.yml
+- ingress.yml

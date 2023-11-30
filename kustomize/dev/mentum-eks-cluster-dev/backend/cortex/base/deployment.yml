@@ -82,6 +82,11 @@ spec:
                 secretKeyRef:
                   key: db_port
                   name: api-creds
+            - name: PROD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: prod_password
+                  name: api-creds
             - name: SENTRY_DSN_CORTEX
               valueFrom:
                 secretKeyRef:

@@ -108,3 +108,10 @@ spec:
             name: uber
             port: 
               number: 80
+      - path: /app-test/
+        pathType: Prefix
+        backend:
+          service:
+            name: app-test
+            port: 
+              number: 80

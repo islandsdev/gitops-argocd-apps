@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.mentum.dev/name: app-test
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: frontend
+    app.mentum.dev/resourceType: Deployment
+  name: app-test
+  namespace: mentum
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      app.mentum.dev/name: app-test
+      app.mentum.dev/tier: frontend
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app.mentum.dev/name: app-test
+        app.mentum.dev/tier: frontend
+    spec:
+      containers:
+      - image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/app-test:v1
+        imagePullPolicy: Always
+        name: default
+        ports:
+        - containerPort: 5000
+          name: http
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30

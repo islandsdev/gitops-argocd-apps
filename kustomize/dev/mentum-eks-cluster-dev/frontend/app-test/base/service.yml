@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app.mentum.dev/name: app-test
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: frontend
+    app.mentum.dev/resourceType: Service
+  name: app-test
+  namespace: mentum
+spec:
+  type: ClusterIP
+  ports:
+  - name: app-test-port
+    port: 80
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app.mentum.dev/name: app-test

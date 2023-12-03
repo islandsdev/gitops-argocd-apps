@@ -1,0 +1,18 @@
+---
+apiVersion: policy/v1beta1
+kind: PodDisruptionBudget
+metadata:
+  name: app-test
+  labels:
+    app.mentum.dev/appRevision: ""
+    app.mentum.dev/name: app-test
+    app.mentum.dev/namespace: mentum
+    app.mentum.dev/enviroment: dev
+    app.mentum.dev/tier: frontend
+    app.mentum.dev/resourceType: PodDisruptionBudget
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app.mentum.dev/name: app-test
+      app.mentum.dev/tier: frontend

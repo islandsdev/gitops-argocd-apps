@@ -1,2 +1,8 @@
 resources:
 - ./base
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+images:
+- name: image
+  newName: image
+  newTag: 0e3337bc9706f8a761911a951a38cbdba1357a95

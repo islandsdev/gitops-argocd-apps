@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: image
   newName: image
-  newTag: 0e3337bc9706f8a761911a951a38cbdba1357a95
+  newTag: 974b1bb438371a2e7410a86482b975753849f934

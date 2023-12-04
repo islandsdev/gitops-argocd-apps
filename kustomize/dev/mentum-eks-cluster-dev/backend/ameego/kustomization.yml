@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/ameego
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/ameego
-  newTag: 4639d8292b0fba36c5130d6638a12a35f2ea45ca
+  newTag: d52ff33f92b37a5fe48c330399bc4a5d7a5c6e3c

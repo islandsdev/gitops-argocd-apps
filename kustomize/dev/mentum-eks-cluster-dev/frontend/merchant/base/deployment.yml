@@ -30,7 +30,7 @@ spec:
         app.mentum.dev/tier: frontend
     spec:
       containers:
-      - image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/merchant:b5844fecb1b7b5f7e23f4d5362d8d9b6630cb07e
+      - image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/merchant:a48a44bb8c6325996b522e8d86dc24e2b6c72332
         imagePullPolicy: Always
         name: default
         ports:

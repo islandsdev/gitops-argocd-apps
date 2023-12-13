@@ -22,6 +22,13 @@ spec:
             name: ameego
             port: 
               number: 80
+      - path: /merchant/
+        pathType: Prefix
+        backend:
+          service:
+            name: merchant
+            port: 
+              number: 80
       - path: /api/
         pathType: Prefix
         backend:

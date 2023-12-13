@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: public-nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+  name: merchant-ingress
+  labels:
+    name: merchant
+spec:
+  rules:
+  - host: dev.mentumqr.com
+    http:
+      paths:
+      - pathType: ImplementationSpecific
+        path: /merchant(/|.*)$
+        backend:
+          service:
+            name: mentum-dev-frontend-merchant
+            port: 
+              number: 80

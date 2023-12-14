@@ -11,12 +11,12 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-methods: "*"
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/allow-headers: "*"
-    nginx.ingress.kubernetes.io/proxy-body-size: 8m
-    nginx.ingress.kubernetes.io/default-backend: customer:80
+    nginx.ingress.kubernetes.io/default-backend: customer
     nginx.ingress.kubernetes.io/enable-access-log: "true"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/ssl-passthrough: "false"
     nginx.ingress.kubernetes.io/preserve-trailing-slash: "true"
     nginx.ingress.kubernetes.io/enable-underscores-in-headers: "true"
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
@@ -110,7 +110,7 @@ spec:
             name: grubhub
             port: 
               number: 81
-      - path: /skip(/|$)(.*)
+      - path: /skip(/|$)(.*)w
         pathType: Prefix
         backend:
           service:
@@ -131,8 +131,3 @@ spec:
             name: uber
             port: 
               number: 80
-      tls:
-      - hosts:
-        - mentumqr.com
-        - *.mentumqr.com
-        secretName: mentumqr.com

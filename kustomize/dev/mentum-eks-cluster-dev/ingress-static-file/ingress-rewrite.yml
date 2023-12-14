@@ -11,6 +11,17 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-methods: "*"
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/allow-headers: "*"
+    nginx.ingress.kubernetes.io/ssl-redirect: "True"
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      if ($host = 'www.dev.mentunqr.com' ) {
+        rewrite ^ https://dev.mentumqr.com$request_uri permanent;
+      }
+    nginx.ingress.kubernetes.io/server-alias: dev.mentumqr.com
+    nginx.ingress.kubernetes.io/preserve-trailing-slash: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: 8m
+    nginx.ingress.kubernetes.io/default-backend: customer:80
+    nginx.ingress.kubernetes.io/enable-access-log: "true"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
 spec:
   ingressClassName: public-nginx
   rules:

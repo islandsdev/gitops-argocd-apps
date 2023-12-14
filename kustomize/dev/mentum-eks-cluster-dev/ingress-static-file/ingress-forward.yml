@@ -10,7 +10,8 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-methods: "*"
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/allow-headers: "*"
-    nginx.ingress.kubernetes.io/ssl-redirect: "True"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       if ($host = 'www.dev.mentunqr.com' ) {
         rewrite ^ https://dev.mentumqr.com$request_uri permanent;
@@ -21,76 +22,77 @@ metadata:
     nginx.ingress.kubernetes.io/default-backend: customer:80
     nginx.ingress.kubernetes.io/enable-access-log: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/enable-underscores-in-headers: "true"
 spec:
   ingressClassName: public-nginx
   rules:
   - host: dev.mentumqr.com
     http:
       paths:
-      - path: /
-        pathType: Prefix
+      - path: /customer(/|$)(.*)
+        pathType: Exact
         backend:
           service:
             name: customer
             port: 
               number: 80
-      - path: /ameego
+      - path: /ameego(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: ameego
             port: 
               number: 80
-      - path: /v1/
+      - path: /v1(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: caput
             port: 
               number: 80
-      - path: /hermes/
+      - path: /hermes(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: hermes
             port: 
               number: 80
-      - path: /olo/
+      - path: /olo(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: olo
             port: 
               number: 80
-      - path: /doordash/
+      - path: /doordash(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: doordash
             port: 
               number: 81
-      - path: /grubhub/
+      - path: /grubhub(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: grubhub
             port: 
               number: 81
-      - path: /skip/
+      - path: /skip(/|$)(.*
         pathType: Prefix
         backend:
           service:
             name: skip
             port: 
               number: 80
-      - path: /socket/
+      - path: /socket
         pathType: Prefix
         backend:
           service:
             name: socket
             port: 
               number: 80
-      - path: /uber/
+      - path: /uber(/|$)(.*
         pathType: Prefix
         backend:
           service:

@@ -110,21 +110,21 @@ spec:
             name: grubhub
             port: 
               number: 81
-      - path: /skip(/|$)(.*
+      - path: /skip(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: skip
             port: 
               number: 80
-      - path: /socket
+      - path: /socket(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: socket
             port: 
               number: 80
-      - path: /uber(/|$)(.*
+      - path: /uber(/|$)(.*)
         pathType: Prefix
         backend:
           service:

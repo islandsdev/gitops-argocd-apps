@@ -3,112 +3,112 @@ kind: Ingress
 metadata:
   name: dev.mentumqr.com
   annotations:
-    nginx.ingress.kubernetes.io/app-root: /
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
 spec:
   ingressClassName: public-nginx
   rules:
   - host: dev.mentumqr.com
     http:
       paths:
-      - path: /
+      - path: /(.*/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: customer
             port: 
               number: 80
-      - path: /ameego/
+      - path: /ameego(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: ameego
             port: 
               number: 80
-      - path: /merchant/
+      - path: /merchant(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: merchant
             port: 
               number: 80
-      - path: /api/
+      - path: /api(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: api
             port: 
               number: 81
-      - path: /v1/
+      - path: /v1(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: caput
             port: 
               number: 80
-      - path: /cortex/
+      - path: /cortex(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: cortex
             port: 
               number: 81
-      - path: /hermes/
+      - path: /hermes(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: hermes
             port: 
               number: 80
-      - path: /hippo/
+      - path: /hippo(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: hippo
             port: 
               number: 81
-      - path: /olo/
+      - path: /olo(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: olo
             port: 
               number: 80
-      - path: /doordash/
+      - path: /doordash(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: doordash
             port: 
               number: 80
-      - path: /grubhub/
+      - path: /grubhub(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: grubhub
             port: 
               number: 80
-      - path: /skip/
+      - path: /skip(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: skip
             port: 
               number: 80
-      - path: /socket/
+      - path: /socket(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: socket
             port: 
               number: 80
-      - path: /uber/
+      - path: /uber(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: uber
             port: 
               number: 80
-      - path: /app-test/
+      - path: /app-test(/|$)(.*)
         pathType: Prefix
         backend:
           service:

@@ -10,7 +10,8 @@ metadata:
     nginx.ingress.kubernetes.io/cors-allow-methods: "*"
     nginx.ingress.kubernetes.io/cors-allow-origin: "*"
     nginx.ingress.kubernetes.io/allow-headers: "*"
-    nginx.ingress.kubernetes.io/ssl-redirect: "True"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
     nginx.ingress.kubernetes.io/configuration-snippet: |
       if ($host = 'www.dev.mentunqr.com' ) {
         rewrite ^ https://dev.mentumqr.com$request_uri permanent;
@@ -21,6 +22,7 @@ metadata:
     nginx.ingress.kubernetes.io/default-backend: customer:80
     nginx.ingress.kubernetes.io/enable-access-log: "true"
     nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+    nginx.ingress.kubernetes.io/enable-underscores-in-headers: "true"
 spec:
   ingressClassName: public-nginx
   rules:

@@ -98,4 +98,7 @@ spec:
             name: redis-master
             port: 
               number: 6379
-              
+  tls:
+    - hosts:
+      - dev.mentumqr.com
+      secretName: dev.mentumqr.com

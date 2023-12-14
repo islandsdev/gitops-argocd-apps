@@ -1,64 +1,26 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dev.mentumqr.com
+  name: dev.mentumqr.com-forward-target
   namespace: mentum
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$1/$3
-    nginx.ingress.kubernetes.io/enable-cors: "true"
-    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
-    nginx.ingress.kubernetes.io/cors-allow-origin: "https://*.dev.mentumqr.com:4443, https://*.dev.mentumqr.com, https://*.dev.mentumqr.com"
-    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-    nginx.ingress.kubernetes.io/allow-headers: "Accept, Accept-Encoding, Content-Type, Content-Length, Host, User-Agent, Authorization, X-Requested-With, sentry-trace, baggage"
+    # nginx.ingress.kubernetes.io/rewrite-target: / 
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    # TODO: Restrict CORS origins
+    #"https://*.dev.mentumqr.com:4443, https://*.dev.mentumqr.com, https://*.dev.mentumqr.com"
+    # nginx.ingress.kubernetes.io/allow-headers: "Accept, Accept-Encoding, Content-Type, Content-Length, Host, User-Agent, Authorization, X-Requested-With, sentry-trace, baggage"
+    # nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "*"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*" 
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
+    nginx.ingress.kubernetes.io/allow-headers: "*"
 spec:
   ingressClassName: public-nginx
   rules:
   - host: dev.mentumqr.com
     http:
       paths:
-      - path: /customer()(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: customer
-            port: 
-              number: 80
-      - path: /merchant()(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: merchant
-            port: 
-              number: 80
-      - path: /api()(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: api
-            port: 
-              number: 81
-      - path: /cortex()(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: cortex
-            port: 
-              number: 81
-      - path: /hippo()(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: hippo
-            port: 
-              number: 81
-      - path: /app-test()(/|$)(.*)
-        pathType: Prefix
-        backend:
-          service:
-            name: app-test
-            port: 
-              number: 80
       - path: /
         pathType: Exact
         backend:

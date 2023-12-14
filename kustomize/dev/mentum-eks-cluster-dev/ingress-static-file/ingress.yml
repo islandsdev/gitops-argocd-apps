@@ -17,7 +17,14 @@ spec:
   - host: dev.mentumqr.com
     http:
       paths:
-      - path: /(.*/|$)(.*)
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: customer
+            port: 
+              number: 80
+      - path: /customer(/|$)(.*)
         pathType: Prefix
         backend:
           service:

@@ -20,7 +20,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: 8m
     nginx.ingress.kubernetes.io/default-backend: customer:80
     nginx.ingress.kubernetes.io/enable-access-log: "true"
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTP"
+    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
 spec:
   ingressClassName: public-nginx
   rules:

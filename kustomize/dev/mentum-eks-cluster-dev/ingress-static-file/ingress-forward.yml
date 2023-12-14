@@ -90,3 +90,11 @@ spec:
             name: uber
             port: 
               number: 80
+      - path: /redis/
+        pathType: Prefix
+        backend:
+          service:
+            name: redis-master
+            port: 
+              number: 6379
+              

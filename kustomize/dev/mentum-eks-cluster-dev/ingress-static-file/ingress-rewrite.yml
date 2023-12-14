@@ -4,7 +4,7 @@ metadata:
   name: dev.mentumqr.com
   namespace: mentum
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /$1$3
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
     nginx.ingress.kubernetes.io/cors-allow-origin: "https://*.dev.mentumqr.com:4443, https://*.dev.mentumqr.com, https://*.dev.mentumqr.com"

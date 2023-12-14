@@ -4,6 +4,10 @@ metadata:
   name: dev.mentumqr.com
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, OPTIONS"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "https://*.mentumqr.com:4443, https://*.mentumqr.com, https://*.mentumqr.com"
+    nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
 spec:
   ingressClassName: public-nginx
   rules:
@@ -79,21 +83,21 @@ spec:
           service:
             name: doordash
             port: 
-              number: 80
+              number: 81
       - path: /grubhub(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: grubhub
             port: 
-              number: 80
+              number: 81
       - path: /skip(/|$)(.*)
         pathType: Prefix
         backend:
           service:
             name: skip
             port: 
-              number: 80
+              number: 81
       - path: /socket(/|$)(.*)
         pathType: Prefix
         backend:

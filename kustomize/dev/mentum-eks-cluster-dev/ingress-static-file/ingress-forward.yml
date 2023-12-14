@@ -4,7 +4,7 @@ metadata:
   name: dev.mentumqr.com-forward-target
   namespace: mentum
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     # TODO: Restrict CORS origins
     #"https://*.dev.mentumqr.com:4443, https://*.dev.mentumqr.com, https://*.dev.mentumqr.com"
@@ -22,7 +22,7 @@ spec:
     http:
       paths:
       - path: /
-        pathType: Prefix
+        pathType: Exact
         backend:
           service:
             name: customer

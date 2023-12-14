@@ -3,7 +3,8 @@ kind: Ingress
 metadata:
   name: dev.mentumqr.com-rewrite-target
   namespace: mentum
-  annotations:
+  annotations:      
+    nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$2
     nginx.ingress.kubernetes.io/enable-cors: "true"
     nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
@@ -17,35 +18,35 @@ spec:
     http:
       paths:
       - path: /merchant(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: merchant
             port: 
               number: 80
       - path: /api(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: api
             port: 
               number: 81
       - path: /cortex(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: cortex
             port: 
               number: 81
       - path: /hippo(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: hippo
             port: 
               number: 81
       - path: /app-test(/|$)(.*)
-        pathType: Prefix
+        pathType: ImplementationSpecific
         backend:
           service:
             name: app-test

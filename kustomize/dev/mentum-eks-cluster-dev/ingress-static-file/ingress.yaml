@@ -33,6 +33,13 @@
               name: customer
               port: 
                 number: 80
+        - path: /(.*)
+          pathType: Prefix
+          backend:
+            service:
+              name: customer
+              port: 
+                number: 80
         - path: /(customer?/|$)(.*)
           pathType: ImplementationSpecific
           backend:

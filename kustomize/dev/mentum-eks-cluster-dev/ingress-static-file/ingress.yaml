@@ -7,23 +7,9 @@
       nginx.ingress.kubernetes.io/use-regex: "true"
       nginx.ingress.kubernetes.io/rewrite-target: /$2
       nginx.ingress.kubernetes.io/enable-cors: "true"
-      # nginx.ingress.kubernetes.io/cors-allow-credentials: "true"
-      # nginx.ingress.kubernetes.io/cors-allow-methods: "*"
-      # nginx.ingress.kubernetes.io/cors-allow-origin: "*"
-      # nginx.ingress.kubernetes.io/allow-headers: "*"
-      # nginx.ingress.kubernetes.io/enable-underscores-in-headers: "true"
       nginx.ingress.kubernetes.io/preserve-trailing-slash: "true"
       nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
-      # nginx.ingress.kubernetes.io/allow-backend-server-header: "true"
-      # nginx.ingress.kubernetes.io/proxy-add-original-uri-header: "true"
       nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
-      # nginx.ingress.kubernetes.io/enable-access-log-for-default-backend: "true"
-      # nginx.ingress.kubernetes.io/configuration-snippet: |
-      #   more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
-      nginx.ingress.kubernetes.io/configuration-snippet: |
-        location / {
-          proxy_pass http://customer:80;
-        }
   spec:
     ingressClassName: public-nginx
     rules:
@@ -37,7 +23,7 @@
               name: customer
               port: 
                 number: 80          
-        - path: /(.+) # Catch all rule to implement a default backend
+        - path: /(/?)(.+) # Catch all rule to implement a default backend
           pathType: ImplementationSpecific
           backend:
             service:
@@ -156,8 +142,8 @@
               name: uber
               port: 
                 number: 80
-    # defaultBackend:
-    #   service:
-    #     name: customer
-    #     port: 
-    #       number: 80
+    defaultBackend:
+      service:
+        name: customer
+        port: 
+          number: 80

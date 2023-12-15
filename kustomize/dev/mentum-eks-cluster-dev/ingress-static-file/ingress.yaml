@@ -16,20 +16,6 @@
     - host: dev.mentumqr.com
       http:
         paths:
-        - path: /
-          pathType: Exact
-          backend:
-            service:
-              name: customer
-              port: 
-                number: 80          
-        - path: /(/?)(.+) # Catch all rule to implement a default backend
-          pathType: ImplementationSpecific
-          backend:
-            service:
-              name: customer
-              port: 
-                number: 80
         - path: /customer(/|$)(.*)
           pathType: ImplementationSpecific
           backend:

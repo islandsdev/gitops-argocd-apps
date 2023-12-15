@@ -1,0 +1,131 @@
+# Groups together all the ingress rules for dev.mentumqr.com
+# whose path needs to be rewritten as "/path(/|$)(.*) -> /$2"
+# except for the api, which needs the enable-cors annotation
+# and is in a separate ingress file
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dev.mentumqr.com
+  namespace: mentum
+  annotations:      
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/preserve-trailing-slash: "true"
+    nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+spec:
+  ingressClassName: public-nginx
+  rules:
+  - host: dev.mentumqr.com
+    http:
+      paths:
+      - path: /customer(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: customer
+            port: 
+              number: 80
+      - path: /merchant(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: merchant
+            port: 
+              number: 80
+      - path: /cortex(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: cortex
+            port: 
+              number: 81
+      - path: /hippo(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: hippo
+            port: 
+              number: 81
+      - path: /app-test(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: app-test
+            port: 
+              number: 80
+      - path: /
+        pathType: Exact
+        backend:
+          service:
+            name: customer
+            port: 
+              number: 80
+      - path: /ameego(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: ameego
+            port: 
+              number: 80
+      - path: /v1(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: caput
+            port: 
+              number: 80
+      - path: /hermes(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: hermes
+            port: 
+              number: 80
+      - path: /olo(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: olo
+            port: 
+              number: 80
+      - path: /doordash(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: doordash
+            port: 
+              number: 81
+      - path: /grubhub(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: grubhub
+            port: 
+              number: 81
+      - path: /skip(/|$)(.*)w
+        pathType: Prefix
+        backend:
+          service:
+            name: skip
+            port: 
+              number: 80
+      - path: /socket(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: socket
+            port: 
+              number: 80
+      - path: /uber(/|$)(.*)
+        pathType: Prefix
+        backend:
+          service:
+            name: uber
+            port: 
+              number: 80
+  defaultBackend:
+    service:
+      name: customer
+      port: 
+        number: 80

@@ -1,7 +1,8 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: dev.mentumqr.com-frontend
+  name: dev.mentumqr.com-customer
+  namespace: mentum
   annotations:      
     nginx.ingress.kubernetes.io/use-regex: "true"
     nginx.ingress.kubernetes.io/rewrite-target: /$1

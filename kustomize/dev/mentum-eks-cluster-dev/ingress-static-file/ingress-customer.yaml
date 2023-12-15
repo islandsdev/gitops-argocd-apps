@@ -13,6 +13,7 @@ metadata:
   labels:
     name: dev.mentumqr.com-frontend
 spec:
+  ingressClassName: public-nginx
   rules:
   - host: dev.mentumqr.com
     http:

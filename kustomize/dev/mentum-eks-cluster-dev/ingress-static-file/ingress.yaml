@@ -41,6 +41,13 @@
               name: customer
               port: 
                 number: 80
+        - path: /customer(/|$)(.*)
+          pathType: ImplementationSpecific
+          backend:
+            service:
+              name: customer
+              port: 
+                number: 80
         - path: /merchant(/|$)(.*)
           pathType: ImplementationSpecific
           backend:

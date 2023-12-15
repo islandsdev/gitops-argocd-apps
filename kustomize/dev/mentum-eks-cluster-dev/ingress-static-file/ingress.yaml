@@ -34,7 +34,7 @@
               name: customer
               port: 
                 number: 80
-        - path: /(customer/?|$)(.*)
+        - path: /(customer/)?(.*)
           pathType: ImplementationSpecific
           backend:
             service:

@@ -20,7 +20,11 @@
       # nginx.ingress.kubernetes.io/enable-access-log-for-default-backend: "true"
       # nginx.ingress.kubernetes.io/configuration-snippet: |
       #   more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
-      nginx.ingress.kubernetes.io/app-root: /customer
+      nginx.ingress.kubernetes.io/configuration-snippet: |
+        location ~^/(.*)$ {
+          rewrite ^/(.*)$ /$1 break;
+          proxy_pass http://customer:80;
+        }
   spec:
     ingressClassName: public-nginx
     rules:
@@ -28,14 +32,8 @@
       http:
         paths:
         - path: /
+          location: { proxy_pass http://customer:80; }
           pathType: Exact
-          backend:
-            service:
-              name: customer
-              port: 
-                number: 80
-        - path: /(customer/)?(.*)
-          pathType: ImplementationSpecific
           backend:
             service:
               name: customer

@@ -30,7 +30,7 @@ spec:
   - host: dev.mentumqr.com
     http:
       paths:
-      - path: /(?:customer?/|$)(.*)
+      - path: /customer(/|$)(.*)
         pathType: ImplementationSpecific
         backend:
           service:

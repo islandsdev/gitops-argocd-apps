@@ -19,6 +19,8 @@ metadata:
     nginx.ingress.kubernetes.io/enable-underscores-in-headers: "true"
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/default-backend: customer
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      more_set_headers "Strict-Transport-Security: max-age=31536000; includeSubDomains; preload";
 spec:
   ingressClassName: public-nginx
   rules:

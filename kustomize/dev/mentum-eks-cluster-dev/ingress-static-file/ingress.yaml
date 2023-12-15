@@ -24,10 +24,6 @@
         if ($host = "dev.mentumqr.com" && $request_uri !~* "^/(merchant|api|cortex|hippo|app-test|ameego|v1|hermes|olo|doordash|grubhub|skip|socket|uber)") {
           proxy_pass http://customer:80;
         }
-
-        location ~^/(.*)$ {
-          proxy_pass http://customer:80;
-        }
   spec:
     ingressClassName: public-nginx
     rules:

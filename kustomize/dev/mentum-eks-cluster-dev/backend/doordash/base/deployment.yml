@@ -56,10 +56,20 @@ spec:
             secretKeyRef:
               key: internal_token
               name: api-creds
-        - name: DOORDASH_TOKEN
+        - name: DOORDASH_DEVELOPER_ID
           valueFrom:
             secretKeyRef:
-              key: doordash_token
+              key: doordash_developer_id
+              name: doordash-creds
+        - name: DOORDASH_KEY_ID
+          valueFrom:
+            secretKeyRef:
+              key: doordash_key_id
+              name: doordash-creds
+        - name: DOORDASH_SIGNING_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: doordash_signing_secret
               name: doordash-creds
         - name: DOORDASH_USER_AGENT
           valueFrom:

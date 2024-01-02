@@ -37,10 +37,19 @@ spec:
         - containerPort: 3000
           name: http
           protocol: TCP
+        env:
+        - name: REACT_APP_BASE_URL
+          valueFrom:
+            secretKeyRef:
+              key: api_base_url
+              name: api-creds
         resources:
           requests:
             cpu: 50m
             memory: 64Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
         terminationMessagePath: /dev/termination-log
         terminationMessagePolicy: File
       dnsPolicy: ClusterFirst

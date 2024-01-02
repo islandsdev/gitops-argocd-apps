@@ -37,7 +37,7 @@ spec:
         - containerPort: 3000
           name: http
           protocol: TCP
-        envFrom:
+        env:
         - name: REACT_APP_BASE_URL
           valueFrom:
             secretKeyRef:

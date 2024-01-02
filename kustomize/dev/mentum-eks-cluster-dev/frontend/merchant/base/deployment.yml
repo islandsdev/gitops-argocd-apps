@@ -37,12 +37,12 @@ spec:
         - containerPort: 3000
           name: http
           protocol: TCP
-        envFrom:
-        - name: REACT_APP_BASE_URL
-          valueFrom:
-            secretKeyRef:
-              key: api_base_url
-              name: api-creds
+        env:
+          - name: REACT_APP_BASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: api_base_url
+                name: api-creds
         resources:
           requests:
             cpu: 50m

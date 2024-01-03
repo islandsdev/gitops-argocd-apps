@@ -3,7 +3,9 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   annotations:
-    reloader.stakater.com/auto: "true"
+    # This will look for all configmaps or secrets being used either via environment variables
+    # or mounts and trigger rolling upgrade if any changes made to those configmaps/secrets.  
+    reloader.stakater.com/auto: "true" 
   labels:
     app.mentum.dev/name: api
     app.mentum.dev/appRevision: ""

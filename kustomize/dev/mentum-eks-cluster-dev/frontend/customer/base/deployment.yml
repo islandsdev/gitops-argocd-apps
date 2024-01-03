@@ -43,6 +43,11 @@ spec:
             secretKeyRef:
               key: api_base_url
               name: api-creds
+        - name: REACT_APP_STRIPE_PUBLIC_KEY
+          valueFrom:
+            secretKeyRef:
+              key: stripe_public_key
+              name: api-creds
         resources:
           requests:
             cpu: 50m

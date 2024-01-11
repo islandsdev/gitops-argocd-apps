@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/skip
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/skip
-  newTag: 52a3c6781d07e040bbfe5dbfdaee1808fa6d3ffd
+  newTag: 7ebafb1bb938c7e63c09c3193286c8d95793277c

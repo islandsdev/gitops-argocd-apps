@@ -96,6 +96,11 @@ spec:
                 secretKeyRef:
                   key: dev_db_host
                   name: api-creds
+            - name: PROD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: prod_password
+                  name: api-creds
             - name: DEV_USERNAME
               valueFrom:
                 secretKeyRef:

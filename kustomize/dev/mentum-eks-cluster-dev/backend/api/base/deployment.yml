@@ -91,10 +91,20 @@ spec:
                 secretKeyRef:
                   key: db_port
                   name: api-creds
-            - name: PROD_PASSWORD
+            - name: DEV_DB_HOST
               valueFrom:
                 secretKeyRef:
-                  key: prod_password
+                  key: dev_db_host
+                  name: api-creds
+            - name: DEV_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_username
+                  name: api-creds
+            - name: DEV_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_password
                   name: api-creds
             - name: SECRET_KEY
               valueFrom:
@@ -146,6 +156,11 @@ spec:
                 secretKeyRef:
                   key: report_email_password
                   name: api-creds
+            - name: MENTUM_BASE_URL
+              valueFrom:
+                secretKeyRef:
+                  key: api_base_url
+                  name: api-creds
             #- name: PAYMENT_SESSION_INITIATIVE_CONTEXT
             #  value: dev.mentumqr.com
             - name: BAMBORA_IDENTITY_CERTIFICATE_CERT_FILE_PATH
@@ -155,7 +170,7 @@ spec:
             - name: ANALYTICS_QUERY_FILE_PATH
               value: /root/analytics.sql
             - name: ENV
-              value: prod
+              value: dev
             - name: QUEUE_MODE
               value: SNS
             - name: REDIS_HOST

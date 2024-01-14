@@ -18,6 +18,7 @@ metadata:
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-body-size: 10m
     nginx.ingress.kubernetes.io/server-snippets: |
       # Enables Protocl Upgrade from HTTP to WebSocket
       location / {
@@ -78,6 +79,7 @@ metadata:
     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-body-size: 10m
     nginx.ingress.kubernetes.io/server-snippets: |
       # Enables Protocl Upgrade from HTTP to WebSocket
       location / {

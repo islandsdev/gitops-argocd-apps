@@ -82,10 +82,30 @@ spec:
                 secretKeyRef:
                   key: db_port
                   name: api-creds
-            - name: PROD_PASSWORD
+            - name: DB_PORT
               valueFrom:
                 secretKeyRef:
-                  key: prod_password
+                  key: db_port
+                  name: api-creds
+            - name: DEV_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_host
+                  name: api-creds
+            - name: DEV_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_username
+                  name: api-creds
+            - name: DEV_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_password
+                  name: api-creds
+            - name: DB_DEV
+              valueFrom:
+                secretKeyRef:
+                  key: db_dev
                   name: api-creds
             - name: SENTRY_DSN_CORTEX
               valueFrom:
@@ -96,6 +116,11 @@ spec:
               valueFrom:
                 secretKeyRef:
                   key: auth0_endpoint
+                  name: api-creds
+            - name: PROD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: prod_password
                   name: api-creds
             - name: ENV
               value: prod

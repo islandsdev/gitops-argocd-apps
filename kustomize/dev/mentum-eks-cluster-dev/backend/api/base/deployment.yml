@@ -180,7 +180,7 @@ spec:
             - name: ANALYTICS_QUERY_FILE_PATH
               value: /root/analytics.sql
             - name: ENV
-              value: prod
+              value: dev
             - name: QUEUE_MODE
               value: SNS
             - name: REDIS_HOST

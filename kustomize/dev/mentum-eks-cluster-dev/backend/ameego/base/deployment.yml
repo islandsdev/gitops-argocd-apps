@@ -134,7 +134,7 @@ spec:
         - name: ANALYTICS_QUERY_FILE_PATH
           value: /root/analytics.sql
         - name: ENV
-          value: prod
+          value: dev
         - name: PLATFORM
           value: k8s
         image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/ameego

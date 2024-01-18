@@ -126,6 +126,11 @@ spec:
             configMapKeyRef:
               key: api.endpoint
               name: api-configmap
+        - name: PROD_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: prod_password
+              name: api-creds
         - name: ANALYTICS_QUERY_FILE_PATH
           value: /root/analytics.sql
         - name: ENV

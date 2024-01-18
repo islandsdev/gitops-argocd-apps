@@ -166,6 +166,11 @@ spec:
                 secretKeyRef:
                   key: api_base_url
                   name: api-creds
+            - name: PROD_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: prod_password
+                  name: api-creds
             #- name: PAYMENT_SESSION_INITIATIVE_CONTEXT
             #  value: dev.mentumqr.com
             - name: BAMBORA_IDENTITY_CERTIFICATE_CERT_FILE_PATH

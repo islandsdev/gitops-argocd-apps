@@ -117,11 +117,6 @@ spec:
                 secretKeyRef:
                   key: auth0_endpoint
                   name: api-creds
-            - name: PROD_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  key: prod_password
-                  name: api-creds
             - name: ENV
               value: dev
             - name: QUEUE_MODE

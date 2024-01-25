@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-scheduler
-  newTag: 5f0150c95f43538e4419a183ddbc226cdcfee2a9
+  newTag: 2209536fb5e13d2c29a87a50aceebe24a2d61c89

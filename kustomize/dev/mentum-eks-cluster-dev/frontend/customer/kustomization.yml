@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/customer
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/customer
-  newTag: 40bc272c791e37d870087356912551a4fe8d6b12
+  newTag: 5d2460dcd13b68169eae04c4c5096d3a6a3490df
 - name: image
   newName: image
   newTag: 630b6e62576cde55fc563fec599529dbc040b8e5

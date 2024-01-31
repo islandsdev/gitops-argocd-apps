@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/olo
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/olo
-  newTag: ed78b10017d467b703262c242fd7f0bc56d1476e
+  newTag: 4fb78b0f929538892bf29cb39a51daa770c35715

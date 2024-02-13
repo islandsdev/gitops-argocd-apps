@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-executor
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-executor
-  newTag: 252b5eb0d2332f86fb70740f3df3ea0350fdbd68
+  newTag: 842900fc2a56566f1e08f5ff44b72aec4b9bd4ce

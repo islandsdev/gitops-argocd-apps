@@ -129,10 +129,30 @@ spec:
             secretKeyRef:
               key: db_port
               name: api-creds
+        - name: DEV_DB_HOST
+          valueFrom:
+            secretKeyRef:
+              key: dev_db_host
+              name: api-creds
+        - name: DEV_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: dev_db_username
+              name: api-creds
+        - name: DEV_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: dev_db_password
+              name: api-creds
+        - name: DB_DEV
+          valueFrom:
+            secretKeyRef:
+              key: db_dev
+              name: api-creds
         - name: REPORT_FORWARD_ENDPOINT
           value: https://snapanalytics.ca/gk/gk_rpc.php
         - name: ENV
-          value: prod
+          value: dev
         - name: PLATFORM
           value: k8s
         image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/lazy_queue:49ec2f9ce3231a21b4dced53f79f4bef877a3c67

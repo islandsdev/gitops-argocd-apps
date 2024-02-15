@@ -1,0 +1,8 @@
+resources:
+- ./base
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# images:
+# - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
+#   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
+#   newTag: 875066ba9302c25bccf2dc00d3803000ed5121c4

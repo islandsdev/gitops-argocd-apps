@@ -1,15 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
-    deployment.kubernetes.io/revision: "31"
   labels:
     app.kubernetes.io/instance: lazy-queue
-    app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: lazy-queue
-    app.kubernetes.io/version: latest
     argocd.argoproj.io/instance: mentum
-    helm.sh/chart: default-0.1.0
   name: lazy-queue
   namespace: mentum
 spec:

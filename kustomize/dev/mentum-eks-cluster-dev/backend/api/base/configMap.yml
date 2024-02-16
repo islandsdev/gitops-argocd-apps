@@ -14,7 +14,7 @@ metadata:
 data:
   api.endpoint: api:80
   app.endpoint: api:81
-  doordash.endpoint: http://doordash:80
+  doordash.endpoint: https://dev.mentumqr.com/doordash
   grubhub.endpoint: http://grubhub:80
   hippo.endpoint: http://hippo-server:80
   skip.endpoint: http://skip:80

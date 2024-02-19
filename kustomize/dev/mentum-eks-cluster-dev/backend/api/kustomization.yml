@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/api
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/api
-  newTag: fdde57aa4ebe8ab11d6d29387f8d9a690a94af10
+  newTag: 7e901ab5f7ec534ac81096f7c6c77a09dbcf2e7d

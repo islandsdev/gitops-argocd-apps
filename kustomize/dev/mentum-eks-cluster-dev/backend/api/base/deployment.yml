@@ -190,6 +190,8 @@ spec:
               value: reporting@ghostkitchenbrands.com
             - name: BAMBORA_MERCHANT_ID
               value: "384520000"
+            - name: ADMIN_EMAIL_RECIPIENTS
+              value: reporting@ghostkitchenbrands.com
           image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/api
           imagePullPolicy: Always
           name: default

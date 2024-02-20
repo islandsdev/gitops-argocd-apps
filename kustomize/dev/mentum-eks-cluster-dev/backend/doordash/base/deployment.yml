@@ -152,6 +152,8 @@ spec:
           value: dev
         - name: PLATFORM
           value: k8s
+        - name: ADMIN_EMAIL_RECIPIENTS
+          value: reporting@ghostkitchenbrands.com
         image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/doordash
         imagePullPolicy: Always
         name: default

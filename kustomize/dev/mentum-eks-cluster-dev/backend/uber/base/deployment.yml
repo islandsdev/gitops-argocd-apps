@@ -77,3 +77,5 @@ spec:
               value: SNS
             - name: PLATFORM
               value: k8s
+            - name: ADMIN_EMAIL_RECIPIENTS
+              value: reporting@ghostkitchenbrands.com

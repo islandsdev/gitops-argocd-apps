@@ -45,21 +45,21 @@ spec:
               secretKeyRef:
                 key: api_base_url
                 name: api-creds
-          # - name: REACT_APP_DOORDASH_OAUTH_CLIENT_ID
-          #   valueFrom:
-          #     secretKeyRef:
-          #       key: doordash_oauth_client_id
-          #       name: doordash-creds
-          # - name: REACT_APP_DOORDASH_OAUTH_BASE_URL
-          #   valueFrom:
-          #     secretKeyRef:
-          #       key: doordash_oauth_base_url
-          #       name: doordash-creds
-          # - name: REACT_APP_DOORDASH_OAUTH_REDIRECT_URL
-          #   valueFrom:
-          #     secretKeyRef:
-          #       key: doordash_oauth_redirect_uri
-          #       name: doordash-creds
+          - name: REACT_APP_DOORDASH_OAUTH_CLIENT_ID
+            valueFrom:
+              secretKeyRef:
+                key: doordash_oauth_client_id
+                name: doordash-creds
+          - name: REACT_APP_DOORDASH_OAUTH_BASE_URL
+            valueFrom:
+              secretKeyRef:
+                key: doordash_oauth_base_url
+                name: doordash-creds
+          - name: REACT_APP_DOORDASH_OAUTH_REDIRECT_URL
+            valueFrom:
+              secretKeyRef:
+                key: doordash_oauth_redirect_uri
+                name: doordash-creds
         resources:
           requests:
             cpu: 50m

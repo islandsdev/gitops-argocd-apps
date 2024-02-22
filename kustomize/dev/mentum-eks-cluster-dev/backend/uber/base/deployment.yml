@@ -56,6 +56,11 @@ spec:
                 secretKeyRef:
                   key: aws_region
                   name: api-creds
+            - name: INTERNAL_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: internal_token
+                  name: api-creds
             - name: UBER_CLIENT_ID
               valueFrom:
                 secretKeyRef:

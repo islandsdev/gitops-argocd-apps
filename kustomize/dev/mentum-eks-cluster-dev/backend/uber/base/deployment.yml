@@ -61,6 +61,16 @@ spec:
                 secretKeyRef:
                   key: internal_token
                   name: api-creds
+            - name: MENTUM_WEBHOOK_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: mentum_webhook_key
+                  name: uber-creds
+            - name: SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  key: secret_key
+                  name: uber-creds
             - name: UBER_CLIENT_ID
               valueFrom:
                 secretKeyRef:

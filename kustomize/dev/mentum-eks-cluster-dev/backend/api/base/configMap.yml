@@ -17,8 +17,8 @@ data:
   doordash.endpoint: http://doordash:81
   grubhub.endpoint: http://grubhub:81
   hippo.endpoint: http://hippo-server:81
-  skip.endpoint: http://skip:81
-  uber.endpoint: http://uber:81
+  skip.endpoint: http://skip:80
+  uber.endpoint: http://uber:80
   omnivore.endpoint: http://omnivore:80
 ---
 apiVersion: v1

@@ -166,6 +166,31 @@ spec:
                 secretKeyRef:
                   key: api_base_url
                   name: api-creds
+            - name: AWS_REGION_CA
+              valueFrom:
+                secretKeyRef:
+                  key: aws_region_ca
+                  name: api-creds
+            - name: S3_SRM_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: s3_srm_bucket_name
+                  name: api-creds
+            - name: SQS_SRM_DOWNLOAD_MENU_QUEUE_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: sqs_srm_download_menu_queue_name
+                  name: api-creds
+            - name: SQS_SRM_DOWNLOAD_ORDER_QUEUE_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: sqs_srm_download_order_queue_name
+                  name: api-creds
+            - name: AWS_ACCOUNT_ID
+              valueFrom:
+                secretKeyRef:
+                  key: aws_account_id
+                  name: api-creds
             #- name: PAYMENT_SESSION_INITIATIVE_CONTEXT
             #  value: dev.mentumqr.com
             - name: BAMBORA_IDENTITY_CERTIFICATE_CERT_FILE_PATH

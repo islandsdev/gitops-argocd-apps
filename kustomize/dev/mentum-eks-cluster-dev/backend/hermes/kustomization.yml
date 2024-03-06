@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hermes
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hermes
-  newTag: 80c39e70d6110bc99ce92cb33d20576cdc2ba5f3
+  newTag: 99bfacbed9ccbfd02cbb00d708b7feb4f7221725

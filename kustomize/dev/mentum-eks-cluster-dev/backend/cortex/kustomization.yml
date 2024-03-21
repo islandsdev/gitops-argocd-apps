@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/cortex
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/cortex
-  newTag: d1ba49612f33b22a81517ea117f294408564ac65
+  newTag: f5ba04d116278bbde1b613034c035f87780de094

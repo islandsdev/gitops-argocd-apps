@@ -88,6 +88,8 @@ spec:
                   name: api-configmap
             - name: ENV
               value: dev
+            - name: PUBLISH_MENUS
+              value: nicecodelawrence
             - name: QUEUE_MODE
               value: SNS
             - name: PLATFORM

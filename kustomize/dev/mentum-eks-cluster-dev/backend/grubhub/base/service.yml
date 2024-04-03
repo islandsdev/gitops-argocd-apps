@@ -19,7 +19,7 @@ spec:
       protocol: TCP
       port: 80
     - name: http-port
-      targetPort: 8081
+      targetPort: 8098
       protocol: TCP
       port: 81
   selector:

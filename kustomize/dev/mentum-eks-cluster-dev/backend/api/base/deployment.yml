@@ -217,6 +217,8 @@ spec:
               value: "384520000"
             - name: ADMIN_EMAIL_RECIPIENTS
               value: reporting@ghostkitchenbrands.com
+            - name: S3_MENU_TRANSLATION_BUCKET_NAME
+              value: gkb-menu-translation
           image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/api
           imagePullPolicy: Always
           name: default

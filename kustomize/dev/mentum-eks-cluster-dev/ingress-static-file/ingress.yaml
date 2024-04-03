@@ -169,7 +169,7 @@ spec:
           service:
             name: skip
             port: 
-              number: 80
+              number: 81
       - path: /socket(/|$)(.*)
         pathType: Prefix
         backend:

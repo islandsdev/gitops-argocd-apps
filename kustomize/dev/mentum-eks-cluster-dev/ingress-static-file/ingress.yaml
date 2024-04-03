@@ -163,7 +163,7 @@ spec:
             name: grubhub
             port: 
               number: 81
-      - path: /skip(/|$)(.*)w
+      - path: /skip(/|$)(.*)
         pathType: Prefix
         backend:
           service:

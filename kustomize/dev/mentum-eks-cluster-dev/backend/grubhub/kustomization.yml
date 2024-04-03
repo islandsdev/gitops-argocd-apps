@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub
-  newTag: caa12b6df3bd3bd7c15e2fb08e1b7912cb9a373d
+  newTag: e9c9e2cccae3a7557545d9f69b936454a8fc4eb7

@@ -6,3 +6,23 @@ kind: Kustomization
 # - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
 #   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
 #   newTag: 875066ba9302c25bccf2dc00d3803000ed5121c4
+patches:
+- target:
+    kind: Deployment
+  patch: |-
+    - op: add
+      path: /spec/template/spec/containers/0/readinessProbe
+      value:
+        httpGet:
+          path: /health
+          port: http
+        initialDelaySeconds: 5
+        periodSeconds: 10
+    - op: add
+      path: /spec/template/spec/containers/0/livenessProbe
+      value:
+        httpGet:
+          path: /health
+          port: http
+        initialDelaySeconds: 10
+        periodSeconds: 30

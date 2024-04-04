@@ -5,24 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/grubhub
-  newTag: dec8082d2f12f03fcad7e022a2e6f9782d19e9e5
-# patches:
-# - patch: |-
-#     - op: add
-#       path: /spec/template/spec/containers/0/readinessProbe
-#       value:
-#         httpGet:
-#           path: /health
-#           port: http
-#         initialDelaySeconds: 5
-#         periodSeconds: 10
-#     - op: add
-#       path: /spec/template/spec/containers/0/livenessProbe
-#       value:
-#         httpGet:
-#           path: /health
-#           port: http
-#         initialDelaySeconds: 10
-#         periodSeconds: 30\
-#   target:
-#     kind: Deployment
+  newTag: bc531038d0595416704b66c0e26094e4aa4ecfe6

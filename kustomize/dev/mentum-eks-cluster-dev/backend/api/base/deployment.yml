@@ -176,11 +176,6 @@ spec:
                 secretKeyRef:
                   key: s3_srm_bucket_name
                   name: api-creds
-            - name: SQS_SRM_DOWNLOAD_MENU_QUEUE_NAME
-              valueFrom:
-                secretKeyRef:
-                  key: sqs_srm_download_menu_queue_name
-                  name: api-creds
             - name: SQS_SRM_DOWNLOAD_ORDER_QUEUE_NAME
               valueFrom:
                 secretKeyRef:

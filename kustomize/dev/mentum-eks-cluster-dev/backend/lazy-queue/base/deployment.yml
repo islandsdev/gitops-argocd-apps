@@ -191,7 +191,7 @@ spec:
           value: dev
         - name: PLATFORM
           value: k8s
-        image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/lazy_queue:49ec2f9ce3231a21b4dced53f79f4bef877a3c67
+        image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/lazy_queue:f2784471596924416ab3dc2d3177beb8bfa78dd4
         imagePullPolicy: Always
         name: default
         ports:

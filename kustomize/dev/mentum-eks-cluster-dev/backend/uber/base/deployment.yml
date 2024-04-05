@@ -136,6 +136,13 @@ spec:
                 secretKeyRef:
                   key: db_dev
                   name: api-creds
+            - name: REPORT_EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: report_email_password
+                  name: api-creds
+            - name: REPORT_EMAIL
+              value: reporting@ghostkitchenbrands.com
             - name: ENV
               value: dev
             - name: PUBLISH_MENUS

@@ -103,6 +103,16 @@ spec:
             secretKeyRef:
               key: skip_order_api_url
               name: skip-creds
+        - name: UBER_CLIENT_ID
+          valueFrom:
+            secretKeyRef:
+              key: uber_client_id
+              name: uber-creds
+        - name: UBER_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: uber_secret
+              name: uber-creds
         - name: STATIC_TOKEN
           valueFrom:
             secretKeyRef:

@@ -86,6 +86,56 @@ spec:
                 configMapKeyRef:
                   key: api.endpoint
                   name: api-configmap
+            - name: ARN
+              valueFrom:
+                secretKeyRef:
+                  key: arn
+                  name: api-creds
+            - name: DB_PROD
+              valueFrom:
+                secretKeyRef:
+                  key: db_prod
+                  name: api-creds
+            - name: PROD_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: prod_db_host
+                  name: api-creds
+            - name: PROD_DB_HOST_RO
+              valueFrom:
+                secretKeyRef:
+                  key: prod_db_host_ro
+                  name: api-creds
+            - name: PROD_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: prod_username
+                  name: api-creds
+            - name: DB_PORT
+              valueFrom:
+                secretKeyRef:
+                  key: db_port
+                  name: api-creds
+            - name: DEV_DB_HOST
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_host
+                  name: api-creds
+            - name: DEV_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_username
+                  name: api-creds
+            - name: DEV_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  key: dev_db_password
+                  name: api-creds
+            - name: DB_DEV
+              valueFrom:
+                secretKeyRef:
+                  key: db_dev
+                  name: api-creds
             - name: ENV
               value: dev
             - name: PUBLISH_MENUS

@@ -61,6 +61,16 @@ spec:
             secretKeyRef:
               key: skip_stock_api_key
               name: skip-creds
+        - name: SKIP_BASE_API_URL
+          valueFrom:
+            secretKeyRef:
+              key: skip_base_api_url
+              name: skip-creds
+        - name: SKIP_ORDER_API_URL
+          valueFrom:
+            secretKeyRef:
+              key: skip_order_api_url
+              name: skip-creds
         - name: SECRET_KEY
           valueFrom:
             secretKeyRef:

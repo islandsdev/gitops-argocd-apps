@@ -78,6 +78,31 @@ spec:
             secretKeyRef:
               key: doordash_dsn
               name: sentry-creds
+        - name: SKIP_MENU_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: skip_menu_api_key
+              name: skip-creds
+        - name: SKIP_ORDER_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: skip_order_api_key
+              name: skip-creds
+        - name: SKIP_STOCK_API_KEY
+          valueFrom:
+            secretKeyRef:
+              key: skip_stock_api_key
+              name: skip-creds
+        - name: SKIP_BASE_API_URL
+          valueFrom:
+            secretKeyRef:
+              key: skip_base_api_url
+              name: skip-creds
+        - name: SKIP_ORDER_API_URL
+          valueFrom:
+            secretKeyRef:
+              key: skip_order_api_url
+              name: skip-creds
         - name: STATIC_TOKEN
           valueFrom:
             secretKeyRef:

@@ -186,6 +186,11 @@ spec:
                 secretKeyRef:
                   key: sqs_srm_download_order_queue_name
                   name: api-creds
+            - name: S3_MENU_TRANSLATION_BUCKET_NAME
+              valueFrom:
+                secretKeyRef:
+                  key: s3_menu_translation_bucket_name
+                  name: api-creds
             - name: AWS_ACCOUNT_ID
               valueFrom:
                 secretKeyRef:
@@ -217,8 +222,6 @@ spec:
               value: "384520000"
             - name: ADMIN_EMAIL_RECIPIENTS
               value: reporting@ghostkitchenbrands.com
-            - name: S3_MENU_TRANSLATION_BUCKET_NAME
-              value: gkb-menu-translation
           image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/api
           imagePullPolicy: Always
           name: default

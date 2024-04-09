@@ -7,22 +7,6 @@ images:
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/ameego
   newTag: 8bf2e40bbe90b98c8edc3802177e43431165a49d
 patches:
-- patch: |-
-    - op: add
-      path: /spec/template/spec/containers/0/readinessProbe
-      value:
-        httpGet:
-          path: /health
-          port: http
-        initialDelaySeconds: 5
-        periodSeconds: 10
-    - op: add
-      path: /spec/template/spec/containers/0/livenessProbe
-      value:
-        httpGet:
-          path: /health
-          port: http
-        initialDelaySeconds: 10
-        periodSeconds: 30
+- path: patch.yml
   target:
     kind: Deployment

@@ -7,6 +7,6 @@ images:
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/ameego
   newTag: 8bf2e40bbe90b98c8edc3802177e43431165a49d
 patches:
-- path: patches/patch.yml
+- path: patches/probes-patch.yml
   target:
     kind: Deployment

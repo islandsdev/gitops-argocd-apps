@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/analytics-backend
-  newTag: e125b0cd63dc4642c11ff7d95f4fa29d2a6883d3
+  newTag: ce4c31e2b19b0e2c861bff47c9bb8b4be4b5f4b7

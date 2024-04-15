@@ -66,11 +66,11 @@ spec:
                 secretKeyRef:
                   key: mentum_webhook_key
                   name: uber-creds
-            - name: SECRET_KEY
-              valueFrom:
-                secretKeyRef:
-                  key: secret_key
-                  name: uber-creds
+            # - name: SECRET_KEY
+            #   valueFrom:
+            #     secretKeyRef:
+            #       key: secret_key
+            #       name: uber-creds
             - name: UBER_CLIENT_ID
               valueFrom:
                 secretKeyRef:
@@ -141,6 +141,8 @@ spec:
                 secretKeyRef:
                   key: report_email_password
                   name: api-creds
+            - name: SECRET_KEY
+              value: cF7EZR4zP6rbA3XV
             - name: REPORT_EMAIL
               value: reporting@ghostkitchenbrands.com
             - name: ENV

@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/ameego
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/ameego
-  newTag: 5e6f38486e9f2d4c72f5a05da944e19ebb4952fd
+  newTag: e2ace733db25a33513053d9b9411c3bbaf41caf6
 patches:
 - path: patches/probes-patch.yml
   target:

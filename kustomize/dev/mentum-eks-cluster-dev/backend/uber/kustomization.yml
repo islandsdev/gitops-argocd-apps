@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/uber
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/uber
-  newTag: 54c42a9cca0cfef9cf0d98ef20d8b30d92c1dc31
+  newTag: 28066c54b8c0218d7851d9ea0d0e619ec3362978
 patches:
 - patch: |-
     - op: add

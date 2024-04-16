@@ -193,7 +193,7 @@ spec:
           value: k8s
         - name: PUBLISH_MENUS
           value: nicecodelawrence
-        image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/lazy_queue:2dd867d6afcb695e458b5be766ba8c417c6103bc
+        image: 238975939821.dkr.ecr.us-east-1.amazonaws.com/lazy_queue:ce464a167dbb5ee441d72db7b345d1d0b69d2986
         imagePullPolicy: Always
         name: default
         ports:

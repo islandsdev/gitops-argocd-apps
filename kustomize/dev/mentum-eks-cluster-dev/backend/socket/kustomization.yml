@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/socket-server
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/socket-server
-  newTag: b8074516786a5b333386707d8bf509bb7008f321
+  newTag: b74d28a31ed792d37460940fe24c2dfedaf9bb30
 patches:
 - patch: |-
     - op: add

@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/doordash
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/doordash
-  newTag: ce464a167dbb5ee441d72db7b345d1d0b69d2986
+  newTag: 4aa2d4d0513d7f2d41f1f68ab01dcad346f212da
 patches:
 - patch: |-
     - op: add

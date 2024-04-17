@@ -135,6 +135,13 @@ spec:
             name: api
             port: 
               number: 81
+      - path: /api-grpc(/|$)(.*)
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: api
+            port: 
+              number: 80
       - path: /hermes(/|$)(.*)
         pathType: Prefix
         backend:

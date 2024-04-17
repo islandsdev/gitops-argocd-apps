@@ -5,7 +5,7 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/caput
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/caput
-  newTag: b1c30d54e5eee16bf51a2b2d141598038822c85d
+  newTag: b619316ac8c012d70b96d017069d5b89f9172e40
 patches:
 - patch: |-
     - op: add

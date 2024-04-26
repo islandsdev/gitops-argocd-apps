@@ -5,4 +5,4 @@ kind: Kustomization
 images:
 - name: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
   newName: 238975939821.dkr.ecr.us-east-1.amazonaws.com/hippo-server
-  newTag: 11ad245538df26ad8a78e5f320ee3beac85c8c6f
+  newTag: 198fbb1581f30cf7a3047543c31ba826aec68f62

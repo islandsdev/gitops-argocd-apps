@@ -1,0 +1,5 @@
+service:
+  name: api-service
+  identifier: apiservice
+  orgIdentifier: default
+  projectIdentifier: mentumdevekscluster

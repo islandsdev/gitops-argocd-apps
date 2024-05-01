@@ -3,3 +3,7 @@ service:
   identifier: apiservice
   orgIdentifier: default
   projectIdentifier: mentumdevekscluster
+  gitOpsEnabled: true
+  serviceDefinition:
+    spec: {}
+    type: Kubernetes
